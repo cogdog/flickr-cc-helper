@@ -1,0 +1,2 @@
+<!--create a bookmark in your browser, and copy the line below in for address/content (SKIP THIS LINE) -->
+javascript:fu=document.URL.split("/")[5];helperURL='http://yourown.domain.com/flickr-cc-helper.html';fw=window.open(helperURL+'?flicked=' + fu, 'cc-helper', 'resizable=0,scrollbars=0,width=560,height=360'); setTimeout(function(){fw.focus();},1000);
