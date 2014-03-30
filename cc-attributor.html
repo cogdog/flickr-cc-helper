@@ -38,8 +38,8 @@ To make this work on your own site, you will need to:
 		var ps = '';
 		
 		// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
-		// the one here belongs to me, i dont care of you use it...
-		var fpai = 'bc5da65ee5e7f823282800672064eae0'; // did you put your key in quotes? 
+		// Smoke will rise from your browser w/o this
+		var fpai = 'YOUR-OWN-APIKEY'; // did you put your key in quotes?
 		
 		// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
 		// if you like long flowing names, edit away
@@ -71,11 +71,11 @@ To make this work on your own site, you will need to:
 
 			
 			} else {
-				if ( typeof qs['flicked'] != 'undefined' )  {
+				if ( typeof qs['flickd'] != 'undefined' )  {
 		
-				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flicked'
+				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
 				// need to add a check for bad data returned
-				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flicked']; 
+				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
 	
 				// get me some data!
 				$.getJSON(apiurl, function(data){
