@@ -33,6 +33,8 @@ So the new method is triggered via a browser bookmarklet tool- install and whene
 
 ![Screen shot of image helper](images/cc-helper-shot.jpg "Example")
 
+As an addition, when you make the bookmarklet tool, you have options to change the size of image used, so you can make use of flickr's different image widths (240, 500, 620, 800, 1024 px).
+
 Yes pop up windows are not elegant. Hopefully in the future I might eb able to generate it as a light-box overlay. Or maybe you can fork this code, and do it for me?
 
 The work of the attribution helper is done via an HTML page boosted with some jQuery code. The bookmarklet passes the unique flickr id (it's in the URL), and the tool page uses the [flickr api vis JSON](https://www.flickr.com/services/api/response.json.html) to get all of the information needed to build and display an attribution string.
