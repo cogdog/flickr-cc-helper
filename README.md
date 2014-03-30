@@ -14,7 +14,7 @@ Darn you flickr! You make it so complex to give proper attribution for Creative 
 
 In 2009 I thought there should be an easier way, and created the [first flickr cc attribution helper](http://userscripts.org/scripts/show/49395) as a Firefox Greasemonkey script.  The script detected if a given flickr photo was Create Commons licensed. If so, it inserted directly into the flickr page a cut and paste set of HTML that had everything to put into a blog post- the image code to display the photo, a link back to the original, and a display of the license, the photo owner, and links back.  It also provided a second text attribution string that could be used in documents or presentations.
 
-![how I like to give attribution](images/cc-sttribution-examplejpg "cc logo")
+![how I like to give attribution](images/cc-sttribution-example.jpg "cc logo")
 
 [Since then I modified this script(http://cogdogblog.com/flickr-cc-helper/) to work as a [Chrome extension](https://chrome.google.com/webstore/detail/flickr-cc-attribution-hel/gcnphdhkhoepofbahkgfifigellgklbp). I've used this on literally hundreds of blog posts primarily on [CogDogBlog](http://cogdogblog.com/).
 
@@ -59,9 +59,9 @@ You need place to put a HTML page at a public URL and you will need to get your 
 1. Get a flickr API key https://www.flickr.com/services/apps/create/apply
 2. Edit the  flickr-cc-helper.html to enter the API key value at
 
-`// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply`
-`// Smoke will rise from your browser w/o this`
-`var fpai = 'YOUR-OWN-APIKEY';`
+	// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
+	// Smoke will rise from your browser w/o this
+	var fpai = 'YOUR-OWN-APIKEY';
 
 
 3. Upload to your web server in directory of your choice.  Check the URL. You know how to do this?
