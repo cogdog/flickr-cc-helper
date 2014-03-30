@@ -1,1 +1,131 @@
-My GitHub Page
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>flickr cc attribution bookmarklet maker</title>
+		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+		<!--[if lt IE 9]><script type='text/javascript' src='assets/javascript/html5.js'></script><![endif]-->
+		<script type='text/javascript' src='assets/javascript/prettify.js'></script>
+		<script type='text/javascript' src='assets/javascript/jquery-1.7.1.min.js'></script>
+		
+		<script type="text/javascript">
+    
+    	// SETUP
+        // default size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
+		var ps = '';
+		
+		// default URL for hosted tool
+		var fu = 'http://cogdog.github.io/cc-attributor.html';
+
+		$(document).ready(function(){	
+			// set default value of form fields
+			$('#furl').val(fu);	
+			$('#isize').val(ps);
+			
+			// call function to set value of text area and bookmarklet link
+			makebookmarklet();				
+			
+			$('#furl').change(function() {
+				 makebookmarklet()
+			});
+			
+			$('#isize').change(function() {
+				 makebookmarklet()
+			});
+			
+			// this function will update the bookmarklet based on the value of the image size and url field values
+			function makebookmarklet() {			
+				if ( $('#isize').val() != '') {
+					sizestr = "+'&s=" + $('#isize').val() + "'";
+				} else {
+					sizestr = '';
+				}
+				
+				// Here is the magic code
+				str = "javascript:fu=document.URL.split(\"/\")[5];helperURL='" + $('#furl').val() + "';fw=window.open(helperURL+'?flickd='+fu" + sizestr +", 'cc-helper', 'resizable=0,scrollbars=0,width=560,height=360'); setTimeout(function(){fw.focus();},1000);";
+				
+				// insert into textarea
+				$('#marklet').val(str);
+				
+				// make it thelink for drag action form hyperlink
+				$("a#mlink").attr('href', str);
+			}
+
+		});
+    </script>
+
+		<link rel='stylesheet' type='text/css' href='assets/css/style.css' />
+		<link rel='stylesheet' type='text/css' href='assets/css/bootstrap.css' />
+		<link rel='stylesheet' type='text/css' href='assets/css/prettify.css' />
+		
+		<style type='text/css'>
+		label, input, textarea {display:block;}
+		label {margin:1em, 0, 0; font-weight:900; }
+		input, textarea {width: 500px;}
+   		</style>
+
+	</head>
+	<body onload='prettyPrint()'>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">flickr cc attribution bookmark maker</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active"><a href="#home">Home</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+</div>
+		
+  <div class='row-fluid'>
+  		<div class='hero-unit' id="home">
+			<header>
+				<h1 class=''>flickr cc attribution helper</h1>
+			</header>
+
+			
+			<h2 id="maker">Bookmarklet Generator</h2>
+			<p>Here is the place! Get your own tool here.</p>
+			
+		<form>
+	  	<label for="isize"></label>
+	  	
+	  	<span class="label label-important">Width of flickr image to use for HTML  attribution</span><br />
+	  	<select id="isize">
+	  		<option value="_m">240px</option>
+	  		<option value="">500px</option>
+	  		<option value="_z">620px</option>
+	  		<option value="_c">800px</option>
+	  		<option value="_b">1024px</option>
+	  	</select>
+	  	
+	  	<label for="furl"></label>
+	  	Change only if you are using your own custom attribution helper page. You are more than welcome to use mine (thanks github!)<br />
+	  	<span class="label label-important">location of attribution helper tool</span>
+	  	<input type="text" id="furl" />
+	  	
+	  	<label for="furl"></label>
+	  	
+	  	
+	  	<span class="label label-important">bookmarklet code</span>
+	  	<textarea id="marklet" rows="5"></textarea>
+	  	Drag link for <a href="#" id="mlink" class='btn btn-info'>flickr cc attribution helper</a> to your browser bar or copy code above if you like to make them by hand.
+	  	</form>
+
+
+        
+	
+		</div>	
+<footer class="span12">
+<div class="alert">
+ a barking dog production &bull;<a href="http://cogdog.info/"> cogdog.info</a> &bull; <a href="http://cogdogblog.com">cogdogblog.com</a>
+</div>
+</footer>
+			</div>
+
+		
+		<a href='https://github.com/cogdog/flickr-cc-helper' class='github-ribbon'><img src='assets/images/github-ribbons/white.png' /></a>
+	</div>	
+	</body>
+</html>
