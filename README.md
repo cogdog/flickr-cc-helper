@@ -43,14 +43,14 @@ The work of the attribution helper is done via an HTML page boosted with some jQ
 THE EASY WAY VS THE CUSTOM WAY
 -----
 
-Of you want to do basic attribution, you can use the bookmarklet generating tool below, and go off attributiing., It is powered by the helper tool page residing on github (I love you github).
+Of you want to do basic attribution, you can use the [bookmarklet generating tool](http://cogdog.github.io/flickr-cc-helper/), and go off attributiing., It is powered by the helper tool page residing on github (I love you github).
 			
 If you would like to customize the attribution output in any way, or just prefer to run your own,  you can grab a copy of the attribtion helper on github here, fork and modify, and run on your own web server. It just needs to be available at a public web page. And you can still use the nookmarklet generator below to build your browser tool.
 
 
 BOOKMARKLET MAKER
 -----
-(Add link to the tool)
+Make one! http://cogdog.github.io/flickr-cc-helper/
 
 
 TO RUN YOUR OWN
@@ -65,7 +65,7 @@ You need place to put a HTML page at a public URL and you will need to get your 
 
 
 3. Upload to your web server in directory of your choice.  Check the URL. You know how to do this?
-4. Use the bookmarklet maker, and drag the link to your toolbar.
+4. Use the [bookmarklet maker](http://cogdog.github.io/flickr-cc-helper/) add your own URL, and drag the link to your toolbar.
 5. Attribute away
 
 
