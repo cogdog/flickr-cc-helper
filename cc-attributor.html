@@ -71,11 +71,11 @@ To make this work on your own site, you will need to:
 
 			
 			} else {
-				if ( typeof qs['flicked'] != 'undefined' )  {
+				if ( typeof qs['flickd'] != 'undefined' )  {
 		
-				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flicked'
+				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
 				// need to add a check for bad data returned
-				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flicked']; 
+				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
 	
 				// get me some data!
 				$.getJSON(apiurl, function(data){
