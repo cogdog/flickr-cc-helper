@@ -59,8 +59,6 @@ You need place to put a HTML page at a public URL and you will need to get your 
 1. Get a flickr API key https://www.flickr.com/services/apps/create/apply
 2. Edit the  flickr-cc-helper.html to enter the API key value at
 
-	// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
-	// Smoke will rise from your browser w/o this
 	var fpai = 'YOUR-OWN-APIKEY';
 
 
