@@ -13,8 +13,8 @@
         // default size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
 		var ps = '';
 		
-		// default URL for hosted tool, you can make this your own too!
-		var fu = 'http://cogdog.github.io/flickr-cc-helper/cc-attributor.html';
+		// default URL for hosted tool
+		var fu = 'http://cogdog.github.io/cc-attributor.html';
 
 		$(document).ready(function(){	
 			// set default value of form fields
@@ -41,7 +41,7 @@
 				}
 				
 				// Here is the magic code
-				str = "javascript:fu=document.URL.split(\"/\")[5];helperURL='" + $('#furl').val() + "';fw=window.open(helperURL+'?flickd='+fu" + sizestr +", 'cc-helper', 'resizable=0,scrollbars=0,width=560,height=360'); setTimeout(function(){fw.focus();},1000);";
+				str = "javascript:(function(){fu=document.URL.split(\"/\")[5];helperURL='" + $('#furl').val() + "';fw=window.open(helperURL+'?flickd='+fu" + sizestr +", 'cc-helper', 'resizable=0,scrollbars=0,width=560,height=360'); setTimeout(function(){fw.focus();},1000);})()";
 				
 				// insert into textarea
 				$('#marklet').val(str);
@@ -71,9 +71,7 @@
         <a class="brand" href="#">flickr cc attribution bookmark maker</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li class="active"><a href="#">Maker</a></li>
-            <li><a href="https://github.com/cogdog/flickr-cc-helper">Code</a></li>
-            <li><a href="http://cogdog.info/">by cogdog</a></li>
+            <li class="active"><a href="#home">Home</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div>
@@ -84,7 +82,6 @@
   		<div class='hero-unit' id="home">
 			<header>
 				<h1 class=''>flickr cc attribution helper</h1>
-				<p>Create a bookmarklet to generate one click copy/paste flickr creative commons attributions</p>
 			</header>
 
 			

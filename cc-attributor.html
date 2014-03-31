@@ -100,12 +100,15 @@ To make this work on your own site, you will need to:
 						var cc_lic = licenses[p.license];
 				
 						// for URLs, see if user has real name on flickr
-						if (p.owner.path_alias != "") {
-							uid = p.owner.path_alias;
-						} else {
-				
-						// rookie user! Use NSID
+						if (p.owner.path_alias === null) {
+					
+							// rookie user! Use NSID
 							uid = p.owner.nsid;
+						
+						} else {
+					
+							// we got an alias, use that
+							uid = p.owner.path_alias;
 						}
 				
 						// build the link for the image page on ye old flickr site
