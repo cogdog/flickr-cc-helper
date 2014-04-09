@@ -86,8 +86,8 @@ To make this work on your own site, you will need to:
 					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
 					var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
 			
-					// lets get fancy and put the image as a background
-					$('#wrapper').css("background", "url(" + photosrc + "_z.jpg) no-repeat");  
+					// lets get fancy and put the image as a background; add black for portrait orientation images
+					$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
 			
 					// title of photo goes atop
 					$('#title').html( p.title._content);
@@ -116,7 +116,7 @@ To make this work on your own site, you will need to:
 				
 			
 						// create attribution string
-						str = '<h2>Attribution (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small><a title="' + p.title._content + '" href="' + photolink + '">cc licensed ( ' + cc_lic +' ) flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a></small></textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">cc licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea>';
+						str = '<h2>Attribution (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small><a href="http://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">creative commons licensed ( ' + cc_lic +' )</a> <a title="' + p.title._content + '" href="' + photolink + '">flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a></small></textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">creative commons licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea>';
 					}
 			
 					// make it shine up, BOOM
