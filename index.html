@@ -41,7 +41,7 @@
 				}
 				
 				// Here is the magic code
-				str = "javascript:fu=document.URL.split(\"/\")[5];helperURL='" + $('#furl').val() + "';fw=window.open(helperURL+'?flickd='+fu" + sizestr +", 'cc-helper', 'resizable=0,scrollbars=0,width=560,height=360'); setTimeout(function(){fw.focus();},1000);";
+				str = "javascript:(function(){fu=document.URL.split(\"/\")[5];helperURL='" + $('#furl').val() + "';fw=window.open(helperURL+'?flickd='+fu" + sizestr +", 'cc-helper', 'resizable=0,scrollbars=0,width=560,height=360'); setTimeout(function(){fw.focus();},1000);})()";
 				
 				// insert into textarea
 				$('#marklet').val(str);
