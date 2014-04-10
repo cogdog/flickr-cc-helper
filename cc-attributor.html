@@ -39,7 +39,7 @@ To make this work on your own site, you will need to:
 		
 		// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
 		// Smoke will rise from your browser w/o this
-		var fpai = 'YOUR-OWN-APIKEY'; // did you put your key in quotes?
+		var fpai = 'bc5da65ee5e7f823282800672064eae0'; // did you put your key in quotes?
 		
 		// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
 		// if you like long flowing names, edit away
@@ -86,8 +86,8 @@ To make this work on your own site, you will need to:
 					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
 					var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
 			
-					// lets get fancy and put the image as a background
-					$('#wrapper').css("background", "url(" + photosrc + "_z.jpg) no-repeat");  
+					// lets get fancy and put the image as a background; add black for portrait orientation images
+					$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
 			
 					// title of photo goes atop
 					$('#title').html( p.title._content);
@@ -100,12 +100,15 @@ To make this work on your own site, you will need to:
 						var cc_lic = licenses[p.license];
 				
 						// for URLs, see if user has real name on flickr
-						if (p.owner.path_alias != "") {
-							uid = p.owner.path_alias;
-						} else {
-				
-						// rookie user! Use NSID
+						if (p.owner.path_alias === null) {
+					
+							// rookie user! Use NSID
 							uid = p.owner.nsid;
+						
+						} else {
+					
+							// we got an alias, use that
+							uid = p.owner.path_alias;
 						}
 				
 						// build the link for the image page on ye old flickr site
@@ -113,7 +116,7 @@ To make this work on your own site, you will need to:
 				
 			
 						// create attribution string
-						str = '<h2>Attribution (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small><a title="' + p.title._content + '" href="' + photolink + '">cc licensed ( ' + cc_lic +' ) flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a></small></textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">cc licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea>';
+						str = '<h2>Attribution (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small><a href="http://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">creative commons licensed ( ' + cc_lic +' )</a> <a title="' + p.title._content + '" href="' + photolink + '">flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a></small></textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">creative commons licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea>';
 					}
 			
 					// make it shine up, BOOM
@@ -122,7 +125,7 @@ To make this work on your own site, you will need to:
 			} else {
 		
 				// no query string variable found, SADFACE
-				str = '<p>No flickr ID found. Maybe you are just checking the URL?</p>';
+				str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="http://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
 				$('#attribution').html(str);
 			}
 		}
