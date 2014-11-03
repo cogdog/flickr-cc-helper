@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- 
+
+a CogDog Production because I love to give attribution for flickr photos and they
+suck at making it easy.
+
+To make this work, you will need to:
+
+* get a flickr API key (anyone with a flickr account can do this) https://www.flickr.com/services/apps/create/apply
+* edit the line below where dat goes
+* put this file somewherez on a web server where you can get its URL
+* create a javascript bookmark that references said URL
+* BOOM! Go attribute
+
+-->
+
+
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Flickr CC Attribution Helper for Wordpressers</title>
+    <style>
+		body {margin:0; padding:0; font-family:Helvetica,Arial,san-serif;}
+		#wrapper {margin:0; padding:0; width:100%; height:400px}
+		#content {margin:0; padding:8px;width:100%; height:400px; background-color: white; opacity: 0.7; filter: alpha(opacity=70);}
+		h1 {margin:0; font-size:120;}
+		h2 {margin-bottom:0; font-size:100%}
+		#credits {font-size:80%; color:#666;margin-top:30px;}
+		textarea {width:500px; background-color:#fff;}
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    	// SETUP
+        // size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
+		var ps = '';
+		
+		var ps_dims = {
+  			_m: '240', _c: '800', _b: '1024'
+		};
+		
+		// set image width
+		if (ps == '') {
+			imgwidth = 500;
+		} else {
+			imgwidth = ps_dims[ps];
+		}
+		
+		// flickr api key. This one is mine. Be nice to it
+		// Get yer own at https://www.flickr.com/services/apps/create/apply
+		// Smoke will rise from your browser w/o this
+		var fpai = 'bc5da65ee5e7f823282800672064eae0';
+		
+		// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
+		// if you like long flowing names, edit away
+		var licenses = new Array( "", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND");
+		
+		
+		// CHECK QUERY PARAMS
+    	// get the query parameters for this page, we are looking for one called "flicked"
+    	// via http://stackoverflow.com/a/3855394/2418186
+    	
+    	var qs = (function(a) {
+    		if (a == "") return {};
+    		var b = {};
+    		for (var i = 0; i < a.length; ++i)
+			{
+				var p=a[i].split('=');
+				if (p.length != 2) continue;
+				b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+			}
+			return b;
+		})(window.location.search.substr(1).split('&'));
+
+
+		$(document).ready(function(){
+		
+			if ( typeof qs['flicked'] != 'undefined' )  {
+			
+				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flicked'
+				// need to add a check for bad data returned
+ 				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flicked']; 
+		
+				// get me some data!
+				$.getJSON(apiurl, function(data){
+			
+					// short hand for photo object
+					p = data.photo;
+				
+					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
+					var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
+				
+					// lets get fancy and put the image as a background
+					$('#wrapper').css("background", "url(" + photosrc + "_z.jpg) no-repeat");  
+				
+					// title of photo goes atop
+					$('#title').html( p.title._content);
+				
+					// trap for stingy non creative commons licensed stuff, stingy bums
+					if ( p.license == 0 ) {
+						str ='<p>Sadly, this lovely image is not licensed under Creative Commons.</p>';
+					} else {
+						// we got CC, get the string
+						var cc_lic = licenses[p.license];
+					
+						// for URLs, see if user has real name on flickr
+						if (p.owner.path_alias != "") {
+							uid = p.owner.path_alias;
+						} else {
+					
+						// rookie user! Use NSID
+							uid = p.owner.nsid;
+						}
+					
+						// build the link for the image page on ye old flickr site
+						var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
+					
+				
+						// create attribution strings
+						
+						str = '<h2>Attribution (Wordpress HTML)</h2><textarea rows="5" onClick="this.select()">[caption width="' + imgwidth +  '" align="alignnone"]<a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a> width=" ' + imgwidth + '"  alt="' + p.title._content +'" /> <a title="' + p.title._content + '" href="' + photolink + '">cc licensed ( ' + cc_lic +' ) flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a>[/caption]</textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">cc licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea>';
+					}
+				
+					// make it shine up, BOOM
+					$('#attribution').html(str);				
+				});
+			} else {
+			
+				// no query string variable. SADFACE
+				str = '<p>No flickr ID found. Maybe you are just checking the URL?</p>';
+				$('#attribution').html(str);
+			}
+
+		});
+    </script>
+   
+  </head>
+  <body>
+	  <div id="wrapper">
+	  	<div id="content">
+	  	<h1 id="title">Flickr CC Attribution Helper</h1>
+	  	<div id="attribution">Getting the lovely stuff... squirrels spinning the turbines...</div>
+	  	<div id="credits">flickr cc attribution helper by <a href="http://cogdog.info">cogdog</a> &bull; <a href="http://cogdog.github.io/flickr-cc-helper">cogdog.github.io/flickr-cc-helper</a></div>
+	  	</div>
+  </div>
+  </body>
+</html>
