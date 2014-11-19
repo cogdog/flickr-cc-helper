@@ -57,7 +57,7 @@ To make this work, you will need to:
 		
 		
 		// CHECK QUERY PARAMS
-    	// get the query parameters for this page, we are looking for one called "flicked"
+    	// get the query parameters for this page, we are looking for one called "flickd"
     	// via http://stackoverflow.com/a/3855394/2418186
     	
     	var qs = (function(a) {
@@ -75,11 +75,11 @@ To make this work, you will need to:
 
 		$(document).ready(function(){
 		
-			if ( typeof qs['flicked'] != 'undefined' )  {
+			if ( typeof qs['flickd'] != 'undefined' )  {
 			
-				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flicked'
+				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
 				// need to add a check for bad data returned
- 				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flicked']; 
+ 				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
 		
 				// get me some data!
 				$.getJSON(apiurl, function(data){
