@@ -57,7 +57,7 @@ To make this work, you will need to:
 		
 		
 		// CHECK QUERY PARAMS
-    	// get the query parameters for this page, we are looking for one called "flickd"
+    	// get the query parameters for this page, we are looking for one called "flicked"
     	// via http://stackoverflow.com/a/3855394/2418186
     	
     	var qs = (function(a) {
@@ -75,43 +75,52 @@ To make this work, you will need to:
 
 		$(document).ready(function(){
 		
-			if ( typeof qs['flickd'] != 'undefined' )  {
+			if (fpai == 'YOUR-OWN-APIKEY') {
+				str = '<p>Hey, did you read the instructions? Check the source, dude/dudetter... you need to insert your own flickr API key in the code.</p>';
+				$('#attribution').html(str);
+
 			
+			} else {
+				if ( typeof qs['flickd'] != 'undefined' )  {
+		
 				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
 				// need to add a check for bad data returned
- 				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
-		
+				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
+	
 				// get me some data!
 				$.getJSON(apiurl, function(data){
-			
+		
 					// short hand for photo object
 					p = data.photo;
-				
+			
 					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
 					var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
-				
-					// lets get fancy and put the image as a background
-					$('#wrapper').css("background", "url(" + photosrc + "_z.jpg) no-repeat");  
-				
+			
+					// lets get fancy and put the image as a background; add black for portrait orientation images
+					$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
+			
 					// title of photo goes atop
 					$('#title').html( p.title._content);
-				
+			
 					// trap for stingy non creative commons licensed stuff, stingy bums
 					if ( p.license == 0 ) {
 						str ='<p>Sadly, this lovely image is not licensed under Creative Commons.</p>';
 					} else {
 						// we got CC, get the string
 						var cc_lic = licenses[p.license];
-					
+				
 						// for URLs, see if user has real name on flickr
-						if (p.owner.path_alias != "") {
-							uid = p.owner.path_alias;
+						if (p.owner.path_alias === null) {
+					
+							// rookie user! Use NSID
+							uid = p.owner.nsid;
+						
 						} else {
 					
-						// rookie user! Use NSID
-							uid = p.owner.nsid;
+							// we got an alias, use that
+							uid = p.owner.path_alias;
 						}
-					
+				
 						// build the link for the image page on ye old flickr site
 						var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
 					
@@ -138,8 +147,8 @@ To make this work, you will need to:
   <body>
 	  <div id="wrapper">
 	  	<div id="content">
-	  	<h1 id="title">Flickr CC Attribution Helper</h1>
-	  	<div id="attribution">Getting the lovely stuff... squirrels spinning the turbines...</div>
+	  	<h1 id="title">Flickr CC Attribution Helper for Worpressers</h1>
+	  	<div id="attribution">Getting the lovely stuff... dogs chasing squirrels... turbines engaged... if this message does not go away soon, something is wrong.</div>
 	  	<div id="credits">flickr cc attribution helper by <a href="http://cogdog.info">cogdog</a> &bull; <a href="http://cogdog.github.io/flickr-cc-helper">cogdog.github.io/flickr-cc-helper</a></div>
 	  	</div>
   </div>
