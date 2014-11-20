@@ -34,8 +34,11 @@ To make this work on your own site, you will need to:
     <script type="text/javascript">
     
     	// SETUP
-        // size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
-		var ps = '';
+        // size for image used in HTML '_m'=240px, ''=500px, '_z'=640 '_c'=800px, '_b' = 1024px
+		
+		var ps_dims = {
+  			_m: '240', _z: '640', _c: '800', _b: '1024'
+		};
 		
 		// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
 		// Smoke will rise from your browser w/o this
@@ -113,8 +116,16 @@ To make this work on your own site, you will need to:
 				
 						// build the link for the image page on ye old flickr site
 						var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
+
+						// check for size parameter
+						if ( typeof qs['s'] == 'undefined' )  {
+							// use default size
+							ps == '';
+						} else {
+							// get specified size
+							ps = qs['s'];
+						}
 				
-			
 						// create attribution string
 						str = '<h2>Attribution (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small><a href="http://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">creative commons licensed ( ' + cc_lic +' )</a> <a title="' + p.title._content + '" href="' + photolink + '">flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a></small></textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">creative commons licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
 					}
