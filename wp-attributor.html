@@ -32,11 +32,10 @@ To make this work, you will need to:
     <script type="text/javascript">
     
     	// SETUP
-        // size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
-		var ps = '';
+        // size for image used in HTML '_m'=240px, ''=500px, '_z'=640 '_c'=800px, '_b' = 1024px
 		
 		var ps_dims = {
-  			_m: '240', _z: '640',  _c: '800', _b: '1024'
+  			_m: '240', _z: '640', _c: '800', _b: '1024'
 		};
 		
 		
@@ -121,7 +120,7 @@ To make this work, you will need to:
 						// check for size parameter
 						if ( typeof qs['s'] == 'undefined' )  {
 							// use default size
-							ps = '';
+							ps == '';
 							imgwidth = 500;
 						} else {
 							// get specified size
@@ -131,7 +130,7 @@ To make this work, you will need to:
 									
 						// create attribution strings
 						
-						str = '<h2>Attribution (Wordpress HTML)</h2><textarea rows="5" onClick="this.select()">[caption width="' + imgwidth +  '" align="alignnone"]<a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a> width="' + imgwidth + '"  alt="' + p.title._content +'" /> <a title="' + p.title._content + '" href="' + photolink + '">cc licensed ( ' + cc_lic +' ) flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a>[/caption]</textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">cc licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
+						str = '<h2>Attribution (Wordpress HTML)</h2><textarea rows="5" onClick="this.select()">[caption width="' + imgwidth +  '" align="alignnone"]<a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" width="' + imgwidth + '"  alt="' + p.title._content +'" /></a><a title="' + p.title._content + '" href="' + photolink + '">cc licensed ( ' + cc_lic +' ) flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a>[/caption]</textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">cc licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
 					}
 				
 					// make it shine up, BOOM
