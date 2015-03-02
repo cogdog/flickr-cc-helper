@@ -4,7 +4,7 @@ by Alan Levine http://cogdog.info/
 
 ![flickr needs help attribution](images/flickr-cc-logo.jpg "cc logo")
 
-Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation.
+Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [maker your own now](http://cogdog.github.io/flickr-cc-helper/).
 
 
 WHY
