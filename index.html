@@ -31,6 +31,12 @@
 			$('#isize').change(function() {
 				 makebookmarklet()
 			});
+
+
+			$('#helperflavor').change(function() {
+				 $('#furl').val('http://cogdog.github.io/flickr-cc-helper/' + $('#helperflavor').val() );
+				 makebookmarklet()		 
+			});
 			
 			// this function will update the bookmarklet based on the value of the image size and url field values
 			function makebookmarklet() {			
@@ -103,13 +109,22 @@
 	  		<option value="_b">1024px</option>
 	  	</select>
 	  	
+	  	<label for="helperflavor"></label>
+	  	<span class="label label-important">Variations for the kinds of attribution generated</span><br />
+	  	
+	  	<select id="helperflavor">
+	  		<option value="cc-attributor.html">Default Attributor (basic HTML)</option>
+	  		<option value="wp-attributor.html">Wordpress Attributor (with caption codes)</option>
+	  		<option value="stamp-attributor.html">Stamped Image Attributor</option>
+	  	</select>
+
+	  	
+	  	
 	  	<label for="furl"></label>
-	  	Change only if you are using your own custom attribution helper page. You are more than welcome to use mine (thanks github!)<br />
 	  	<span class="label label-important">location of attribution helper tool</span>
 	  	<input type="text" id="furl" />
 	  	
-	  	<label for="furl"></label>
-	  	
+	  	<label for="marklet"></label>
 	  	
 	  	<span class="label label-important">bookmarklet code</span>
 	  	<textarea id="marklet" rows="5"></textarea>
