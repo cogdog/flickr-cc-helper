@@ -4,7 +4,7 @@ by Alan Levine http://cogdog.info/
 
 ![flickr needs help attribution](images/flickr-cc-logo.jpg "cc logo")
 
-Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation.
+Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [make your own now](http://cogdog.github.io/flickr-cc-helper/).
 
 
 WHY
@@ -16,7 +16,7 @@ In 2009 I thought there should be an easier way and created the [first flickr cc
 
 ![how I like to give attribution](images/cc-sttribution-example.jpg "cc logo")
 
-[I later modified this script(http://cogdogblog.com/flickr-cc-helper/) to work as a [Chrome extension](https://chrome.google.com/webstore/detail/flickr-cc-attribution-hel/gcnphdhkhoepofbahkgfifigellgklbp). I've used this on literally hundreds of blog posts primarily on [CogDogBlog](http://cogdogblog.com/).
+[I later modified this script](http://cogdogblog.com/flickr-cc-helper/) to work as a [Chrome extension](https://chrome.google.com/webstore/detail/flickr-cc-attribution-hel/gcnphdhkhoepofbahkgfifigellgklbp). I've used this on literally hundreds of blog posts primarily on [CogDogBlog](http://cogdogblog.com/).
 
 The pitfall of this approach was that it was completely dependent on knowing the structure of the flickr photo display page-- it is tied to the names of CSS  components. The flickr display format has changed 3 times since 2009.  Each change requiring a re-write of the script. Flickr does not provide any standard meta data on the page to identify the creative commons license, so getting details called for a set of XPATH parsing and Javascript gymnastics.
 			
@@ -41,24 +41,25 @@ Yes pop up windows are not elegant. Hopefully in the future I might be able to g
 
 
 
-
 THE EASY WAY VS THE CUSTOM WAY
 -----
 
-If you want to do basic attribution, you can use the [bookmarklet generating tool](http://cogdog.github.io/flickr-cc-helper/), and go off attributiing. It is powered by the helper tool page residing on github (I love you github).
+If you want to do basic attribution, you can use the [bookmarklet generating tool](http://cogdog.github.io/flickr-cc-helper/), and go off attributing.  It is powered by the helper tool page residing on github (I love you github).
+
+![The Bookmarklet maker](images/cc-helper-maker.jpg "The Maker")
 
 The work of the attribution helper is done via an HTML page boosted with some jQuery code. The bookmarklet passes the unique flickr id (it's in the URL), and the tool page uses the [flickr api vis JSON](https://www.flickr.com/services/api/response.json.html) to get all of the information needed to build and display an attribution string.
+
+These pages act as plugins, so the bookmarklet maker can make different varieties of output. There are currently [three flavors of attributions generated](http://cogdog.github.io/flickr-cc-helper/flavors.html)
+
+1. Plain HTML - embeds the image and puts a proper and linked attribution text below
+2. Wordpress - embeds the image but wraps it in the [caption]...[/caption] short codes that Wordpress themes use to format images with captions.
+3. Stamped - generates a downloadable copy of the image with the attribution stamped right into it (thanks to [John Johnston](http://johnjohnston.info) who created a [nifty mobile version of a flicker finder / attribution stamper](http://johnjohnston.info/flickrcctouch/).
 
 			
 If you would like to customize the attribution output in any way, or just prefer to run your own,  you can grab a copy of the attribtion helper on github here, fork and modify, and run on your own web server. It just needs to be available at a public web page. And you can still use the bookmarklet generator below to build your browser tool.
 
-
-BOOKMARKLET MAKER
------
-Make one! http://cogdog.github.io/flickr-cc-helper/
-
-
-TO RUN YOUR OWN
+TO RUN YOUR OWN MAKER
 ------------
 
 You need place to put a HTML page at a public URL and you will need to get your own Flickr API key 

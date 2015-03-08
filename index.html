@@ -10,7 +10,7 @@
 		<script type="text/javascript">
     
     	// SETUP
-        // default size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
+        // default size for image used in HTML '_m'=240px, ''=500px, '_z' = 640px, '_c'=800px, '_b' = 1024px
 		var ps = '';
 		
 		// default URL for hosted tool on github
@@ -30,6 +30,12 @@
 			
 			$('#isize').change(function() {
 				 makebookmarklet()
+			});
+
+
+			$('#helperflavor').change(function() {
+				 $('#furl').val('http://cogdog.github.io/flickr-cc-helper/' + $('#helperflavor').val() );
+				 makebookmarklet()		 
 			});
 			
 			// this function will update the bookmarklet based on the value of the image size and url field values
@@ -72,6 +78,7 @@
         <div class="nav-collapse">
           <ul class="nav">
             <li class="active"><a href="#">Make It</a></li>
+            <li><a href="http://cogdog.github.io/flickr-cc-helper/flavors.html">Flavors</a></li>
             <li><a href="https://github.com/cogdog/flickr-cc-helper">Code</a></li>
             <li><a href="http://cogdog.info/">by cogdog</a></li>
           </ul>
@@ -98,18 +105,28 @@
 	  	<select id="isize">
 	  		<option value="_m">240px</option>
 	  		<option value="">500px</option>
-	  		<option value="_z">620px</option>
+	  		<option value="_z">640px</option>
 	  		<option value="_c">800px</option>
 	  		<option value="_b">1024px</option>
 	  	</select>
 	  	
+	  	<label for="helperflavor"></label>
+	  	<span class="label label-important">Variations for the kinds of attribution generated </span><br />
+	  	<a href="http://cogdog.github.io/flickr-cc-helper/flavors.html">See examples</a> for what each produces.<br />
+	  	
+	  	<select id="helperflavor">
+	  		<option value="cc-attributor.html">Default Attributor (basic HTML)</option>
+	  		<option value="wp-attributor.html">Wordpress Attributor (with caption codes)</option>
+	  		<option value="stamp-attributor.html">Stamped Image Attributor</option>
+	  	</select>
+
+	  	
+	  	
 	  	<label for="furl"></label>
-	  	Change only if you are using your own custom attribution helper page. You are more than welcome to use mine (thanks github!)<br />
 	  	<span class="label label-important">location of attribution helper tool</span>
 	  	<input type="text" id="furl" />
 	  	
-	  	<label for="furl"></label>
-	  	
+	  	<label for="marklet"></label>
 	  	
 	  	<span class="label label-important">bookmarklet code</span>
 	  	<textarea id="marklet" rows="5"></textarea>

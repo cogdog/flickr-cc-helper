@@ -5,14 +5,12 @@
 a CogDog Production because I love to give attribution for flickr photos and they
 suck at making it easy.
 
-This HTML page provides all of the functionality to generate a pop up cut and past atribution page from a bookmarklet tool.
-
-To make this work on your own site, you will need to:
+To make this work, you will need to:
 
 * get a flickr API key (anyone with a flickr account can do this) https://www.flickr.com/services/apps/create/apply
-* edit the line below where dat goes (under SETUP)
+* edit the line below where dat goes
 * put this file somewherez on a web server where you can get its URL
-* create a javascript bookmark that references said URL- you can use [need to insert maker tool URL]
+* create a javascript bookmark that references said URL
 * BOOM! Go attribute
 
 -->
@@ -20,7 +18,7 @@ To make this work on your own site, you will need to:
 
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>Flickr CC Attribution Helper</title>
+    <title>Flickr CC Attribution Helper for Wordpressers</title>
     <style>
 		body {margin:0; padding:0; font-family:Helvetica,Arial,san-serif;}
 		#wrapper {margin:0; padding:0; width:100%; height:400px}
@@ -40,9 +38,11 @@ To make this work on your own site, you will need to:
   			_m: '240', _z: '640', _c: '800', _b: '1024'
 		};
 		
-		// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
+		
+		// flickr api key. This one is mine. Be nice to it
+		// Get yer own at https://www.flickr.com/services/apps/create/apply
 		// Smoke will rise from your browser w/o this
-		var fpai = 'bc5da65ee5e7f823282800672064eae0'; // did you put your key in quotes?
+		var fpai = 'bc5da65ee5e7f823282800672064eae0';
 		
 		// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
 		// if you like long flowing names, edit away
@@ -116,41 +116,44 @@ To make this work on your own site, you will need to:
 				
 						// build the link for the image page on ye old flickr site
 						var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
-
+					
 						// check for size parameter
 						if ( typeof qs['s'] == 'undefined' )  {
 							// use default size
-							ps = '';
+							ps == '';
+							imgwidth = 500;
 						} else {
 							// get specified size
 							ps = qs['s'];
+							imgwidth = ps_dims[ps];
 						}
-				
-						// create attribution string
-						str = '<h2>Attribution (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small><a href="http://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">creative commons licensed ( ' + cc_lic +' )</a> <a title="' + p.title._content + '" href="' + photolink + '">flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a></small></textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">creative commons licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
+									
+						// create attribution strings
+						
+						str = '<h2>Attribution (Wordpress HTML)</h2><textarea rows="5" onClick="this.select()">[caption width="' + imgwidth +  '" align="aligncenter"]<a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" width="' + imgwidth + '"  alt="' + p.title._content +'" /></a><a title="' + p.title._content + '" href="' + photolink + '">cc licensed ( ' + cc_lic +' ) flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a>[/caption]</textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">cc licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
 					}
-			
+				
 					// make it shine up, BOOM
 					$('#attribution').html(str);				
 				});
 			} else {
-		
-				// no query string variable found, SADFACE
-				str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="http://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
+			
+				// no query string variable. SADFACE
+				str = '<p>No flickr ID found. Maybe you are just checking the URL?</p>';
 				$('#attribution').html(str);
 			}
 		}
 
-	});
+		});
     </script>
    
   </head>
   <body>
 	  <div id="wrapper">
 	  	<div id="content">
-	  	<h1 id="title">Flickr CC Attribution Helper</h1>
-	  	<div id="attribution">Getting the lovely stuff... squirrels spinning the turbines... if this spinning does not stop, something has gone awry</div>
-	  	<div id="credits">flickr cc attribution helper by cogdog &bull; cogdog.info</div>
+	  	<h1 id="title">Flickr CC Attribution Helper for Worpressers</h1>
+	  	<div id="attribution">Getting the lovely stuff... dogs chasing squirrels... turbines engaged... if this message does not go away soon, something is wrong.</div>
+	  	<div id="credits">flickr cc attribution helper by <a href="http://cogdog.info">cogdog</a> &bull; <a href="http://cogdog.github.io/flickr-cc-helper">cogdog.github.io/flickr-cc-helper</a></div>
 	  	</div>
   </div>
   </body>
