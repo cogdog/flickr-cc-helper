@@ -21,7 +21,7 @@ https://github.com/cogdog/flickr-cc-helper
     <title>Flickr CC Attribution Helper</title>
     <style>
 		body {margin:0; padding:0; font-family:Helvetica,Arial,san-serif; background-color: white; } 
-		#wrapper {margin:0; padding:0; width:100%; height:400px;}
+		#wrapper {margin:0; padding:0; width:100%; height:400px; background: #000 url('images/life-is-sharing.jpg') no-repeat;}
 		#content {margin:0; padding:8px;width:100%; height:400px; background-color: white; opacity: 0.7; filter: alpha(opacity=70);}
 		h1 {margin:0; font-size:120;}
 		h2 {margin-bottom:0; font-size:100%}
@@ -50,34 +50,34 @@ https://github.com/cogdog/flickr-cc-helper
 		function get_license_text( thelicense ) {
 			switch( thelicense ) {
 				case "7":
-					return 'No copyright restriction (The Commons)';
+					return 'with no copyright restriction (Flickr Commons)';
 					break;
 				case "8":
-					return 'United States Government Work ( PD )';
+					return 'as s United States Government Work ( PD )';
 					break;
 				default:
-					return 'Creative Commons licensed (' + licenses[thelicense] + ')';
+					return 'under a Creative Commons (' + licenses[thelicense] + ') license';
 			}
 		}
 	
 		function get_license_html( thelicense ) {
 			switch( thelicense ) {
 				case "7":
-					return '<a href="http://flickr.com/commons/usage/">No Copyright Restriction (The Commons)</a>';
+					return 'with <a href="http://flickr.com/commons/usage/">no copyright restriction (Flickr Commons)</a>';
 					break;
 				case "8":
-					return '<a href="http://www.usa.gov/copyright.shtml">Public Domain United States Government Work ( PD )</a>';
+					return 'as a <a href="http://www.usa.gov/copyright.shtml">Public Domain United States Government Work ( PD )</a>';
 					break;
 				case "9":
-					return '<a href="https://creativecommons.org/publicdomain/zero/1.0/">Public Domain Dedication Creative Commons licensed ( CC0 )</a>';
+					return 'under a <a href="https://creativecommons.org/publicdomain/zero/1.0/">Public Domain Dedication Creative Commons ( CC0 ) license</a>';
 					break;
 				case "10":
-					return '<a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Work Mark 1.0 Creative Commons licensed</a>';
+					return 'under a <a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Work Mark 1.0 Creative Commons</a> license';
 					break;
 
 				default:
 					cc_lic = licenses[thelicense];
-					return '<a href="http://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">Creative Commons licensed ( ' + cc_lic +' )</a>';
+					return 'under a <a href="http://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">Creative Commons ( ' + cc_lic +' ) license</a>';
 			}
 		}
 	
@@ -119,75 +119,80 @@ https://github.com/cogdog/flickr-cc-helper
 		$(document).ready(function(){
 		
 			ChangeStatusMessage();
+			
+			// give the status messages a whirl, then do the work
+			setTimeout(function() {
 
-			if ( typeof qs['flickd'] != 'undefined' )  {
+				if ( typeof qs['flickd'] != 'undefined' )  {
 	
-				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
+					// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
 				
-				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
+					var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
 
-				// get me some data!
-				$.getJSON(apiurl, function(data){
+					// get me some data!
+					$.getJSON(apiurl, function(data){
 	
-					// short hand for photo object
-					p = data.photo;
+						// short hand for photo object
+						p = data.photo;
 		
-					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
-					var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
+						// build the base string for image URLs, everything bu the size code and the ".jpg" at end
+						var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
 		
-					// lets get fancy and put the image as a background; add black for portrait orientation images
-					$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
+						// lets get fancy and put the image as a background; add black for portrait orientation images
+						$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
 		
-					// title of photo goes atop
-					$('#title').html( p.title._content);
+						// title of photo goes atop
+						$('#title').html( p.title._content);
 
 
-					// for URLs, see if user has real name on flickr
-					if (p.owner.path_alias === null) {
+						// for URLs, see if user has real name on flickr
+						if (p.owner.path_alias === null) {
 		
-						// rookie user! Use NSID
-						uid = p.owner.nsid;
+							// rookie user! Use NSID
+							uid = p.owner.nsid;
 			
-					} else {
-		
-						// we got an alias, use that
-						uid = p.owner.path_alias;
-					}
-			
-					// build the link for the image page on ye old flickr site
-					var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
-	
-					// trap for stingy non creative commons licensed stuff, stingy bums
-					if ( p.license == 0 ) {
-						attrib_str ='<p>Sadly, <a href="' + photolink + '">this lovely image</a> is not licensed for reuse... Maybe ask the owner to learn about <a href="https://www.flickr.com/creativecommons/">creative commons licensed available on flickr</a>, or ask them for permission to reuse.</p>';
-					} else {
-						// we got license!
-			
-						// check for size parameter
-						if ( typeof qs['s'] == 'undefined' )  {
-							// use default size
-							ps = '';
 						} else {
-							// get specified size
-							ps = qs['s'];
+		
+							// we got an alias, use that
+							uid = p.owner.path_alias;
 						}
 			
-						// create attribution string
-						attrib_str = '<h2>Attribution (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small>' + get_license_html(p.license) + ' <a title="' + p.title._content + '" href="' + photolink + '">flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a></small></textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">' + get_license_text(p.license) + ' flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
-					}
-					
-					// stop the random status messages!
-					clearInterval(waiting_msg);
-						
-					// make it shine up, BOOM we got attribution for ya here
-					$('#attribution').html(attrib_str);				
-				});
-			} else {
+						// build the link for the image page on ye old flickr site
+						var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
 	
-				// no query string variable found, SADFACE
-				attrib_str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="http://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
-				$('#attribution').html(attrib_str);
-			}
+						// trap for stingy non creative commons licensed stuff, stingy bums
+						if ( p.license == 0 ) {
+							attrib_str ='<p>Sadly, <a href="' + photolink + '">this lovely image</a> is not licensed for reuse... Maybe ask the owner to learn about <a href="https://www.flickr.com/creativecommons/">creative commons licensed available on flickr</a>, or ask them for permission to reuse.</p>';
+						} else {
+							// we got license!
+			
+							// check for size parameter
+							if ( typeof qs['s'] == 'undefined' )  {
+								// use default size
+								ps = '';
+							} else {
+								// get specified size
+								ps = qs['s'];
+							}
+			
+							// create attribution string
+							attrib_str = '<h2>Attribution (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small><a title="' + p.title._content + '" href="' + photolink + '">flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a> ' + get_license_html(p.license) + ' </small></textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
+						}
+					
+						// stop the random status messages!
+						clearInterval(waiting_msg);
+						
+						// make it shine up, BOOM we got attribution for ya here
+						$('#attribution').html(attrib_str);				
+					});
+				} else {
+	
+					// no query string variable found, SADFACE
+					attrib_str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="http://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
+					$('#attribution').html(attrib_str);
+				}
+			
+			},  2000);
 	});
     </script>
    
