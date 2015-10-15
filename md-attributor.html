@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- 
+
+a CogDog Production because I love to give attribution for flickr photos and they
+suck at making it easy.
+
+http://cogdog.github.io/flickr-cc-helper/
+
+This HTML page provides all of the functionality to generate a pop up cut and paste
+atribution page from a bookmarklet tool. Each version of this can generate a different
+format for the attribution.
+
+To create a new format for attribution, fork and create a new version of this via
+https://github.com/cogdog/flickr-cc-helper
+-->
+
+
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Flickr CC Attribution Helper for Markdown</title>
+    <style>
+		body {margin:0; padding:0; font-family:Helvetica,Arial,san-serif; background-color: white; } 
+		#wrapper {margin:0; padding:0; width:100%; height:400px; background: #000 url('images/life-is-sharing.jpg') no-repeat;}
+		#content {margin:0; padding:8px;width:100%; height:400px; background-color: white; opacity: 0.7; filter: alpha(opacity=70);}
+		h1 {margin:0; font-size:120;}
+		h2 {margin-bottom:0; font-size:100%}
+		#credits {font-size:80%; color:#666;margin-top:30px;}
+		textarea {width:500px; background-color:#fff;}
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    	// SETUP
+        // size for image used in HTML '_m'=240px, ''=500px, '_z'=640 '_c'=800px, '_b' = 1024px
+		
+		var ps_dims = {
+  			_m: '240', _z: '640', _c: '800', _b: '1024'
+		};
+		
+		
+		// flickr api key. This one is mine. Be nice to it
+		// Get yer own at https://www.flickr.com/services/apps/create/apply
+		// Smoke will rise from your browser w/o this
+		var fpai = 'bc5da65ee5e7f823282800672064eae0';
+		
+		// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
+		// if you like long flowing names, edit away
+		// Now includes flickr commons, US GOVT work, and new PD licenses
+		var licenses = new Array( "", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND", "", "PD", "CC0", "PD" );
+		
+		function get_license_text( thelicense ) {
+			switch( thelicense ) {
+				case "7":
+					return 'with no copyright restriction (Flickr Commons)';
+					break;
+				case "8":
+					return 'as s United States Government Work ( PD )';
+					break;
+				default:
+					return 'under a Creative Commons (' + licenses[thelicense] + ') license';
+			}
+		}
+	
+		function get_license_html( thelicense ) {
+			switch( thelicense ) {
+				case "7":
+					return 'with [no copyright restriction (Flickr Commons)](http://flickr.com/commons/usage/)';
+					break;
+				case "8":
+					return 'as a [Public Domain United States Government Work ( PD )](http://www.usa.gov/copyright.shtml)';
+					break;
+				case "9":
+					return 'under a [Public Domain Dedication Creative Commons ( CC0 ) license](https://creativecommons.org/publicdomain/zero/1.0/)';
+					break;
+				case "10":
+					return 'under a [Public Domain Work Mark 1.0 Creative Commons](https://creativecommons.org/publicdomain/mark/1.0/) license';
+					break;
+
+				default:
+					cc_lic = licenses[thelicense];
+					return 'under a [Creative Commons ( ' + cc_lic +' ) license](http://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/)';
+			}
+		}
+		
+		// CHECK QUERY PARAMS
+    	// get the query parameters for this page, we are looking for one called "flicked"
+    	// via http://stackoverflow.com/a/3855394/2418186
+    	
+    	var qs = (function(a) {
+    		if (a == "") return {};
+    		var b = {};
+    		for (var i = 0; i < a.length; ++i)
+			{
+				var p=a[i].split('=');
+				if (p.length != 2) continue;
+				b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+			}
+			return b;
+		})(window.location.search.substr(1).split('&'));
+
+		// set up a time to change the status message
+		var waiting_msg = setInterval(function () { ChangeStatusMessage() }, 500);
+	
+		// display a random mesage to let 'em know wheels are spinning
+		function ChangeStatusMessage() {
+			var funnymessages = ['Greasing the tubes for transmission', 'Feeding the squirrels who spin the turbines', 'Checking the weather for stormy clouds', 'Spreading smooth peanut butter', 'Wondering about the meaning of life', 'Knocking on the doors of Yahoo saying please give us some API data', 'Crosswiring the figwitz circuit', 'Gazing up at the sky', 'Getting the lovely stuff', 'Sautéing onions and garlic in butter', 'Waving at Ken', 'Checking my mentions on twitter', 'Leaning back and relaxing', 'Doing some yoga stretches', 'Ordering a fish taco' ];
+			
+			$('#attribution').text( funnymessages[Math.floor(Math.random()*funnymessages.length)] + '...');
+		}
+		
+		// placeholder for attribution string
+		var attrib_str = '';
+		
+		// Create an alert if we have not generated a result
+		setTimeout("if (attrib_str == '') alert('Ouch, we seem to not be making contact with the flickr API, it might be taking a nap. It may need more time, or perhaps try later.')", 10000);
+		
+		
+		$(document).ready(function(){
+		
+			ChangeStatusMessage();
+
+			// give the status messages a whirl, then do the work
+			setTimeout(function() {
+				if ( typeof qs['flickd'] != 'undefined' )  {
+		
+					// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
+					// need to add a check for bad data returned
+					var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
+	
+					// get me some data!
+					$.getJSON(apiurl, function(data){
+		
+						// short hand for photo object
+						p = data.photo;
+			
+						// build the base string for image URLs, everything bu the size code and the ".jpg" at end
+						var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
+			
+						// lets get fancy and put the image as a background; add black for portrait orientation images
+						$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
+			
+						// title of photo goes atop
+						$('#title').html( p.title._content);
+			
+
+						// for URLs, see if user has real name on flickr
+						if (p.owner.path_alias === null) {
+		
+							// rookie user! Use NSID
+							uid = p.owner.nsid;
+			
+						} else {
+		
+							// we got an alias, use that
+							uid = p.owner.path_alias;
+						}
+			
+						// build the link for the image page on ye old flickr site
+						var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
+	
+						// trap for stingy non creative commons licensed stuff, stingy bums
+						if ( p.license == 0 ) {
+							attrib_str ='<p>Sadly, <a href="' + photolink + '">this lovely image</a> is not licensed for reuse... Maybe ask the owner to learn about <a href="https://www.flickr.com/creativecommons/">creative commons licensed available on flickr</a>, or ask them for permission to reuse.</p>';
+						} else {
+							// we got license!				
+					
+							// check for size parameter
+							if ( typeof qs['s'] == 'undefined' )  {
+								// use default size
+								ps = '';
+								imgwidth = 500;
+							} else {
+								// get specified size
+								ps = qs['s'];
+								imgwidth = ps_dims[ps];
+							}
+									
+							// create attribution strings
+						
+							attrib_str = '<h2>Attribution (Markdown)</h2><textarea rows="5" onClick="this.select()">[![](' + photosrc + ps + '.jpg)](' + photolink + ' "' + p.title._content + '")   \n[flickr photo](' + photolink + ' "' + p.title._content + '") shared by [' + p.owner.username + '](http://flickr.com/people/' + uid + ') ' + get_license_html(p.license) + '</textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
+						}
+				
+						// stop the random status messages!
+						clearInterval(waiting_msg);
+						
+						// make it shine up, BOOM we got attribution for ya here
+						$('#attribution').html(attrib_str);				
+					});
+				} else {
+			
+					// no query string variable found, SADFACE
+					attrib_str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="http://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
+					$('#attribution').html(attrib_str);
+				}
+			},  2000);
+
+		});
+    </script>
+   
+  </head>
+  <body>
+	  <div id="wrapper">
+	  	<div id="content">
+	  	<h1 id="title">Flickr CC Attribution Helper for Worpress</h1>
+	  	<div id="attribution"></div>
+	  	<div id="credits"><a href="http://cogdog.github.io/flickr-cc-helper/" target="_blank">flickr cc attribution helper</a> by @cogdog &bull; <a href="http://cogdog.info" target="_blank">cogdog.info</a></div>
+	  	</div>
+  </div>
+  </body>
+</html>
