@@ -1,15 +1,15 @@
 Flickr Creative Commons Attribution Helper
 =========================
-by Alan Levine http://cogdog.info/
+by Alan Levine http://cog.dog/
 
 ![flickr needs help attribution](images/flickr-cc-logo.jpg "cc logo")
 
-Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [make your own now](http://cogdog.github.io/flickr-cc-helper/).
+Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [make your own now](https://cogdog.github.io/flickr-cc-helper/).
 
 WHY
 -----
 
-Darn you flickr! You make it so complex to give proper attribution for Creative Commons images. The photos available are a bag of gold-- [collection of creative commons licensed photos on flickr](http://flickr.com/creativecommon). Yet to use said images to create a blog post requires no less than 12 clicks and 4 copy/paste operations (estimate).
+Darn you flickr! You make it so complex to give proper attribution for Creative Commons images. The photos available are a bag of gold-- [collection of creative commons licensed photos on flickr](https://flickr.com/creativecommons). Yet to use said images to create a blog post requires no less than 12 clicks and 4 copy/paste operations (estimate).
 
 In 2009 I thought there should be an easier way and created the [first flickr cc attribution helper](http://userscripts.org/scripts/show/49395) as a Firefox Greasemonkey script.  The script detected if a given flickr photo was Create Commons licensed. If so, it inserted directly into the flickr page a cut and paste set of HTML that had everything to put into a blog post- the image code to display the photo, a link back to the original, and a display of the license, the photo owner, and links back.  It also provided a second text attribution string that could be used in documents or presentations.
 
@@ -28,7 +28,7 @@ Because attribution is love.
 THE WAY FORWARD
 -----
 
-This new version takes a different approach; a person interested  in using the tool intalls a [web browser bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). Just drag the link text on the blur button to your browser's bookmark bar.
+This new version takes a different approach; a person interested  in using the tool intalls a [web browser bookmarklet](https:). Just drag the link text on the blur button to your browser's bookmark bar.
 
 Upon viewing a flickr photo, the bookmarklet spawns a window containing the one click copy attribution. If you are viewing a flickr photo licensed under creative commons, it will launch a small window with the one click copy/paste attribution fit for use in a blog post or a presentation.
 
@@ -41,13 +41,13 @@ Yes pop up windows are not elegant. Hopefully in the future I might be able to g
 THE EASY WAY VS THE CUSTOM WAY
 -----
 
-If you want to do basic attribution, you can use the [bookmarklet generating tool](http://cogdog.github.io/flickr-cc-helper/), and go off attributing.  It is powered by the helper tool page residing on github (I love you github).
+If you want to do basic attribution, you can use the [bookmarklet generating tool](https://cogdog.github.io/flickr-cc-helper/), and go off attributing.  It is powered by the helper tool page residing on github (I love you github).
 
 ![The Bookmarklet maker](images/cc-helper-maker.jpg "The Maker")
 
 The work of the attribution helper is done via an HTML page boosted with some jQuery code. The bookmarklet passes the unique flickr id (it's in the URL), and the tool page uses the [flickr api vis JSON](https://www.flickr.com/services/api/response.json.html) to get all of the information needed to build and display an attribution string.
 
-These pages act as plugins, so the bookmarklet maker can make different varieties of output. There are currently [three flavors of attributions generated](http://cogdog.github.io/flickr-cc-helper/flavors.html)
+These pages act as plugins, so the bookmarklet maker can make different varieties of output. There are currently [three flavors of attributions generated](https://cogdog.github.io/flickr-cc-helper/flavors.html)
 
 1. Plain HTML - embeds the image and puts a proper and linked attribution text below
 2. Wordpress - embeds the image but wraps it in the [caption]...[/caption] short codes that Wordpress themes use to format images with captions.
