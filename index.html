@@ -14,7 +14,7 @@
 		var ps = '';
 		
 		// default URL for hosted tool on github
-		var fu = 'http://cogdog.github.io/flickr-cc-helper/cc-attributor.html';
+		var fu = 'https://cogdog.github.io/flickr-cc-helper/cc-attributor.html';
 
 		$(document).ready(function(){	
 			// set default value of form fields
@@ -34,7 +34,7 @@
 
 
 			$('#helperflavor').change(function() {
-				 $('#furl').val('http://cogdog.github.io/flickr-cc-helper/' + $('#helperflavor').val() );
+				 $('#furl').val('https://cogdog.github.io/flickr-cc-helper/' + $('#helperflavor').val() );
 				 makebookmarklet()		 
 			});
 			
@@ -78,9 +78,10 @@
         <div class="nav-collapse">
           <ul class="nav">
             <li class="active"><a href="#">Make It</a></li>
+            <li><a href="https://github.com/cogdog/flickr-cc-helper/blob/gh-pages/README.md">Docs</a></li>
             <li><a href="flavors.html">Flavors</a></li>
             <li><a href="https://github.com/cogdog/flickr-cc-helper">Code</a></li>
-            <li><a href="http://cogdog.info/">by cogdog</a></li>
+            <li><a href="http://cog.dog/">by cogdog</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div>
@@ -91,7 +92,7 @@
   		<div class='hero-unit' id="home">
 			<header>
 				<h1 class=''>flickr cc attribution helper</h1>
-				<p>Makes attributing flickr creative commons photos a simple cut and paste operation (<a href="https://github.com/cogdog/flickr-cc-helper">more...</a>)</li>
+				<p>Makes attributing flickr creative commons photos a simple cut and paste operation (<a href="https://github.com/cogdog/flickr-cc-helper/blob/gh-pages/README.md">more...</a>)</li>
 			</header>
 
 			
@@ -112,7 +113,7 @@
 	  	
 	  	<label for="helperflavor"></label>
 	  	<span class="label label-important">Variations for the kinds of attribution generated </span><br />
-	  	<a href="http://cogdog.github.io/flickr-cc-helper/flavors.html">See examples</a> for what each produces.<br />
+	  	<a href="https://cogdog.github.io/flickr-cc-helper/flavors.html">See examples</a> for what each produces.<br />
 	  	
 	  	<select id="helperflavor">
 	  		<option value="cc-attributor.html">Default Attributor (basic HTML)</option>
@@ -140,7 +141,7 @@
 		</div>	
 <footer class="span12">
 <div class="alert">
- a barking dog production &bull;<a href="http://cogdog.info/"> cogdog.info</a> &bull; <a href="http://cogdogblog.com">cogdogblog.com</a>
+ a barking dog production &bull;<a href="http://cog.dog/"> cog.dog</a> &bull; <a href="http://cogdogblog.com">cogdogblog.com</a>
 </div>
 </footer>
 			</div>

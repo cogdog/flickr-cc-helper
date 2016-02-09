@@ -32,7 +32,7 @@ To make this work on your own site, you will need to:
 		#credits {font-size:80%; color:#666;margin-top:30px;}
 		#change_size{display:block;}
     </style>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script type="text/javascript">
     
     	// SETUP
@@ -86,7 +86,7 @@ To make this work on your own site, you will need to:
 					p = data.photo;
 			
 					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
-					var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
+					var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
 			
 					// lets get fancy and put the image as a background; add black for portrait orientation images
 					//JJ Since we are showing the image forget about background
@@ -115,7 +115,7 @@ To make this work on your own site, you will need to:
 						}
 				
 						// build the link for the image page on ye old flickr site
-						var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
+						var photolink = "https://flickr.com/photos/" + uid + "/" + p.id;
 				
 			
 						// load stamped image
@@ -136,7 +136,7 @@ To make this work on your own site, you will need to:
 			} else {
 		
 				// no query string variable found, SADFACE
-				str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="http://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
+				str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="https://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
 				$('#attribution').html(str);
 			}
 		}
@@ -146,7 +146,7 @@ To make this work on your own site, you will need to:
 	var otherSizes =function(){
 		//quite a bit of repeated stuff here, should put in stampImage Function
 		ps = document.getElementById('change_size').value;
-		var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;	 
+		var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;	 
 	 stampsrc=photosrc + ps + '.jpg';
 	   
 	var stampurl='http://johnjohnston.info/stamp/stampdl.php?i='+stampsrc+'&s='+stampuser+'%20-%20'+stampattrib;
