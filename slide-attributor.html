@@ -19,53 +19,14 @@ To make this work, you will need to:
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Flickr CC Attribution Helper for Wordpress Slide Galleries</title>
-    <style>
-		body {margin:0; padding:0; font-family:Helvetica,Arial,san-serif;}
-		#wrapper {margin:0; padding:0; width:100%; height:400px}
-		#content {margin:0; padding:8px;width:100%; height:400px; background-color: white; opacity: 0.7; filter: alpha(opacity=70);}
-		h1 {margin:0; font-size:120;}
-		h2 {margin-bottom:0; font-size:100%}
-		#credits {font-size:80%; color:#666;margin-top:30px;}
-		textarea {width:500px; background-color:#fff;}
-    </style>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-    <script type="text/javascript">
+    <link rel='stylesheet' type='text/css' href='assets/css/cc-attributor.css' />
     
-    	// SETUP
-        // size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
-		var ps = '';
-		
-		
-		// flickr api key. This one is mine. Be nice to it
-		// Get yer own at https://www.flickr.com/services/apps/create/apply
-		// Smoke will rise from your browser w/o this
-		var fpai = 'bc5da65ee5e7f823282800672064eae0';
-		
-		// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
-		// if you like long flowing names, edit away
-		var licenses = new Array( "", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND");
-		
-		var license_long_names = new Array( "", "Attribution-NonCommercial-ShareAlike 2.0 Generic", "Attribution-NonCommercial 2.0 Generic", "Attribution-NonCommercial-NoDerivs 2.0 Generic", "Attribution 2.0 Generic", "Attribution-ShareAlike 2.0 Generic", "Attribution-NoDerivs 2.0 Generic");
-		
-		
-		// CHECK QUERY PARAMS
-    	// get the query parameters for this page, we are looking for one called "flicked"
-    	// via http://stackoverflow.com/a/3855394/2418186
-    	
-    	var qs = (function(a) {
-    		if (a == "") return {};
-    		var b = {};
-    		for (var i = 0; i < a.length; ++i)
-			{
-				var p=a[i].split('=');
-				if (p.length != 2) continue;
-				b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-			}
-			return b;
-		})(window.location.search.substr(1).split('&'));
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/cc-attributor.js"></script>
 
+    <script type="text/javascript">
+    /* Specific code to produce the attribution for this tool */
 
-		$(document).ready(function(){
 		
 			if ( typeof qs['flickd'] != 'undefined' )  {
 			
@@ -131,9 +92,9 @@ To make this work, you will need to:
   <body>
 	  <div id="wrapper">
 	  	<div id="content">
-	  	<h1 id="title">Flickr CC Attribution Helper For Wordpress Captions</h1>
-	  	<div id="attribution">Getting the groovy stuff... clouds parting ... spices mixing...</div>
-	  	<div id="credits">flickr cc attribution helper by <a href="http://cogdog.info">cogdog</a> &bull; <a href="http://cogdog.github.io/flickr-cc-helper">cogdog.github.io/flickr-cc-helper</a></div>
+	  	<h1 id="title">Flickr CC Attribution Helper For Wordpress Slide Galleries</h1>
+	  	<div id="attribution"></div>
+	  	<div id="credits">flickr cc attribution helper by <a href="http://cog.dog">cog.dog</a> &bull; <a href="http://cogdog.github.io/flickr-cc-helper">cogdog.github.io/flickr-cc-helper</a></div>
 	  	</div>
   </div>
   </body>
