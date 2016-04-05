@@ -76,9 +76,10 @@ function ChangeStatusMessage() {
 	$('#attribution').text( funnymessages[Math.floor(Math.random()*funnymessages.length)] + '...');
 }
 
-// Create an alert if we have not generated a result
-setTimeout("if (attrib_str == '') alert('Ouch, we seem to not be making contact with the flickr API, it might be taking a nap. It may need more time, so you can let this spin and enjoy the funny messages, or perhaps try later.')", 10000);
-
 // OTHER STUFF -------------------------------------------------------------------------
 // placeholder for attribution string, to be built later
 var attrib_str = '';
+
+// Create an alert if we have not generated a result
+setTimeout("if (attrib_str == '') alert('Ouch, we seem to not be making contact with the flickr API, it might be taking a nap. It may need more time, so you can let this spin and enjoy the funny messages, or perhaps try later.')", 10000);
+
