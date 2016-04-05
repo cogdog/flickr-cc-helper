@@ -1,3 +1,10 @@
+// IMAGE SIZES  ------------------------------------------------------------------------
+// size codes for image used in HTML '_m'=240px, ''=500px, '_z'=640 '_c'=800px, '_b' = 1024px
+
+var ps_dims = {
+	_m: '240', _z: '640', _c: '800', _b: '1024'
+};
+
 // FLICKR API KEY -----------------------------------------------------------------------
 // flickr api key goes here. Get yer own at https://www.flickr.com/services/apps/create/apply
 // Smoke will rise from your browser w/o this, bad mojo will be place upon you. Just kidding.
@@ -76,10 +83,9 @@ function ChangeStatusMessage() {
 	$('#attribution').text( funnymessages[Math.floor(Math.random()*funnymessages.length)] + '...');
 }
 
-// OTHER STUFF -------------------------------------------------------------------------
-// placeholder for attribution string, to be built later
-var attrib_str = '';
-
 // Create an alert if we have not generated a result
 setTimeout("if (attrib_str == '') alert('Ouch, we seem to not be making contact with the flickr API, it might be taking a nap. It may need more time, so you can let this spin and enjoy the funny messages, or perhaps try later.')", 10000);
 
+// OTHER STUFF -------------------------------------------------------------------------
+// placeholder for attribution string, to be built later
+var attrib_str = '';
