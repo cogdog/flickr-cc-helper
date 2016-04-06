@@ -77,7 +77,7 @@ var waiting_msg = setInterval(function () { ChangeStatusMessage() }, 800);
 // Holders for message to let 'em know wheels are spinning
 // Here is where you can have fun by adding new messages FORK IT BABY!
 function ChangeStatusMessage() {
-	var funnymessages = ['Greasing the tubes for transmission', 'Feeding the squirrels who spin the turbines', 'Checking the weather for stormy clouds', 'Spreading smooth peanut butter', 'Barking like a big dog', 'Has anyone seen my data? Jason?', 'Wondering about the meaning of life', 'Knocking on the doors of yahoo saying please give us some api data', 'Crosswiring the figwitz circuit', 'Gazing up at the sky', 'Getting the lovely stuff', 'Sautéing onions and garlic in butter' ];
+	var funnymessages = ['Greasing the tubes for transmission', 'Feeding the squirrels who spin the turbines', 'Checking the weather for stormy clouds', 'Waving at Ken', 'Spreading smooth peanut butter', 'Barking like a big dog', 'Has anyone seen my data? Jason?', 'Wondering about the meaning of life', 'Knocking on the doors of yahoo saying please give us some api data', 'Crosswiring the figwitz circuit', 'Gazing up at the sky', 'Getting the lovely stuff', 'Sautéing onions and garlic in butter' ];
 
 	// Attach the message to the screen. Aren't we clever?	
 	$('#attribution').text( funnymessages[Math.floor(Math.random()*funnymessages.length)] + '...');
