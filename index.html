@@ -7,7 +7,7 @@
 		<link rel='stylesheet' type='text/css' href='assets/css/style.css' />
 		<link rel='stylesheet' type='text/css' href='assets/css/bootstrap.css' />
 		<link rel='stylesheet' type='text/css' href='assets/css/prettify.css' />
-		
+
 		<style type='text/css'>
 		label, input, textarea {display:block;}
 		label {margin:1em, 0, 0; font-weight:900; }
@@ -17,52 +17,52 @@
 		<!--[if lt IE 9]><script type='text/javascript' src='assets/javascript/html5.js'></script><![endif]-->
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type='text/javascript' src='assets/javascript/prettify.js'></script>
-		
+
 		<script type="text/javascript">
-    
+
     	// SETUP
         // default size for image used in HTML '_m'=240px, ''=500px, '_z' = 640px, '_c'=800px, '_b' = 1024px
 		var ps = '';
-		
-		// default URL for hosted tool on github
-		var fu = 'https://cogdog.github.io/flickr-cc-helper/cc-attributor.html';
 
-		$(document).ready(function(){	
+		// default URL for hosted tool on github
+		var fu = 'https://blaetter.github.io/flickr-cc-helper/cc-attributor.html';
+
+		$(document).ready(function(){
 			// set default value of form fields
-			$('#furl').val(fu);	
+			$('#furl').val(fu);
 			$('#isize').val(ps);
-			
+
 			// call function to set value of text area and bookmarklet link
-			makebookmarklet();				
-			
+			makebookmarklet();
+
 			$('#furl').change(function() {
 				 makebookmarklet()
 			});
-			
+
 			$('#isize').change(function() {
 				 makebookmarklet()
 			});
 
 
 			$('#helperflavor').change(function() {
-				 $('#furl').val('https://cogdog.github.io/flickr-cc-helper/' + $('#helperflavor').val() );
-				 makebookmarklet()		 
+				 $('#furl').val('https://blaetter.github.io/flickr-cc-helper/' + $('#helperflavor').val() );
+				 makebookmarklet()
 			});
-			
+
 			// this function will update the bookmarklet based on the value of the image size and url field values
-			function makebookmarklet() {			
+			function makebookmarklet() {
 				if ( $('#isize').val() != '') {
 					sizestr = "+'&s=" + $('#isize').val() + "'";
 				} else {
 					sizestr = '';
 				}
-				
+
 				// Here is the magic code
 				str = "javascript:(function(){fu=document.URL.split(\"/\")[5];helperURL='" + $('#furl').val() + "';fw=window.open(helperURL+'?flickd='+fu" + sizestr +", 'cc-helper', 'resizable=0,scrollbars=0,width=560,height=360'); setTimeout(function(){fw.focus();},1000);})()";
-				
+
 				// insert into textarea
 				$('#marklet').val(str);
-				
+
 				// make it thelink for drag action form hyperlink
 				$("a#mlink").attr('href', str);
 			}
@@ -72,7 +72,7 @@
 
 	</head>
 	<body onload='prettyPrint()'>
-	
+
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 		  <div class="container">
@@ -89,7 +89,7 @@
 		  </div>
 		</div><!-- /navbar-inner -->
 	</div>
-		
+
   <div class='row-fluid'>
   		<div class='hero-unit' id="home">
 			<header>
@@ -97,13 +97,13 @@
 				<p>Makes attributing flickr creative commons photos a simple cut and paste operation (<a href="https://github.com/cogdog/flickr-cc-helper/blob/gh-pages/README.md">more...</a>)</li>
 			</header>
 
-			
+
 			<h2 id="maker">Bookmarklet Generator</h2>
 			<p>Build your own attribution tool here; just drag blue button to your browser bar.</p>
-			
+
 		<form>
 	  	<label for="isize"></label>
-	  	
+
 	  	<span class="label label-important">Width of flickr image to use for HTML  attribution</span><br />
 	  	<select id="isize">
 	  		<option value="_m">240px</option>
@@ -112,35 +112,36 @@
 	  		<option value="_c">800px</option>
 	  		<option value="_b">1024px</option>
 	  	</select>
-	  	
+
 	  	<label for="helperflavor"></label>
 	  	<span class="label label-important">Variations for the kinds of attribution generated </span><br />
 	  	<a href="https://cogdog.github.io/flickr-cc-helper/flavors.html">See examples</a> for what each produces.<br />
-	  	
+
 	  	<select id="helperflavor">
 	  		<option value="cc-attributor.html">Default Attributor (basic HTML)</option>
 	  		<option value="wp-attributor.html">Wordpress Attributor (with caption codes)</option>
 	  		<option value="stamp-attributor.html">Stamped Image Attributor</option>
-	  		<option value="md-attributor.html">Markdown Attributor</option>
+            <option value="md-attributor.html">Markdown Attributor</option>
+            <option value="custom-attributor.html">Custom Attributor</option>
 	  	</select>
 
-	  	
-	  	
+
+
 	  	<label for="furl"></label>
 	  	<span class="label label-important">location of attribution helper tool</span>
 	  	<input type="text" id="furl" />
-	  	
+
 	  	<label for="marklet"></label>
-	  	
+
 	  	<span class="label label-important">bookmarklet code</span>
 	  	<textarea id="marklet" rows="5"></textarea>
 	  	Drag link for <a href="#" id="mlink" class='btn btn-info'>flickr cc attribution helper</a> to your browser bar or copy code above if you like to make them by hand.
 	  	</form>
 
 
-        
-	
-		</div>	
+
+
+		</div>
 <footer class="span12">
 <div class="alert">
  a barking dog production &bull; <a href="http://cog.dog/">cog.dog</a> &bull; <a href="http://cogdogblog.com">cogdogblog.com</a>
@@ -148,8 +149,8 @@
 </footer>
 			</div>
 
-		
+
 		<a href='https://github.com/cogdog/flickr-cc-helper' class='github-ribbon'><img src='assets/images/github-ribbons/white.png' /></a>
-	</div>	
+	</div>
 	</body>
 </html>
