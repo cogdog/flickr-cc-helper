@@ -19,13 +19,25 @@
 		<script type='text/javascript' src='assets/javascript/prettify.js'></script>
 		
 		<script type="text/javascript">
+
+
+		function getAbsolutePath() {
+			// get URL path for the current document (e.g. the location of index.html on host
+			// ----- h/t http://stackoverflow.com/a/2864169/2418186
+			var loc = window.location;
+			var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/'));
+			return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+		}
     
     	// SETUP
         // default size for image used in HTML '_m'=240px, ''=500px, '_z' = 640px, '_c'=800px, '_b' = 1024px
 		var ps = '';
 		
+		// base URL for all relative ones used in script		
+		var baseurl = getAbsolutePath();
+		
 		// default URL for hosted tool on github
-		var fu = 'https://cogdog.github.io/flickr-cc-helper/cc-attributor.html';
+		var fu = baseurl + '/cc-attributor.html';
 
 		$(document).ready(function(){	
 			// set default value of form fields
@@ -45,7 +57,7 @@
 
 
 			$('#helperflavor').change(function() {
-				 $('#furl').val('https://cogdog.github.io/flickr-cc-helper/' + $('#helperflavor').val() );
+				 $('#furl').val( baseurl + '/' + $('#helperflavor').val() );
 				 makebookmarklet()		 
 			});
 			
@@ -115,7 +127,7 @@
 	  	
 	  	<label for="helperflavor"></label>
 	  	<span class="label label-important">Variations for the kinds of attribution generated </span><br />
-	  	<a href="https://cogdog.github.io/flickr-cc-helper/flavors.html">See examples</a> for what each produces.<br />
+	  	<a href="flavors.html">See examples</a> for what each produces.<br />
 	  	
 	  	<select id="helperflavor">
 	  		<option value="cc-attributor.html">Default Attributor (basic HTML)</option>
