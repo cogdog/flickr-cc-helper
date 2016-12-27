@@ -2,15 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- 
 
+Built on:
 a CogDog Production because I love to give attribution for flickr photos and they
 suck at making it easy.
 
-To make this work, you will need to:
+Added Stamping variation by @johnjohnston
+This HTML page provides all of the functionality to generate a stamped image attribution page from a bookmarklet tool. JJ
+
+To make this work on your own site, you will need to:
 
 * get a flickr API key (anyone with a flickr account can do this) https://www.flickr.com/services/apps/create/apply
-* edit the line below where dat goes
+* edit the line below where dat goes (under SETUP)
 * put this file somewherez on a web server where you can get its URL
-* create a javascript bookmark that references said URL
+* create a javascript bookmark that references said URL- you can use [need to insert maker tool URL]
 * BOOM! Go attribute
 
 -->
@@ -18,31 +22,26 @@ To make this work, you will need to:
 
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>Flickr CC Attribution Helper for Wordpressers</title>
+    <title>Flickr CC Attribution Helper</title>
     <style>
 		body {margin:0; padding:0; font-family:Helvetica,Arial,san-serif;}
 		#wrapper {margin:0; padding:0; width:100%; height:400px}
-		#content {margin:0; padding:8px;width:100%; height:400px; background-color: white; opacity: 0.7; filter: alpha(opacity=70);}
+		#content {margin:0; padding:8px;width:100%; height:400px; background-color: white;}
 		h1 {margin:0; font-size:120;}
 		h2 {margin-bottom:0; font-size:100%}
 		#credits {font-size:80%; color:#666;margin-top:30px;}
-		textarea {width:500px; background-color:#fff;}
+		#change_size{display:block;}
     </style>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script type="text/javascript">
     
     	// SETUP
-        // size for image used in HTML '_m'=240px, ''=500px, '_z'=640 '_c'=800px, '_b' = 1024px
+        // size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
+		var ps = '';
 		
-		var ps_dims = {
-  			_m: '240', _z: '640', _c: '800', _b: '1024'
-		};
-		
-		
-		// flickr api key. This one is mine. Be nice to it
-		// Get yer own at https://www.flickr.com/services/apps/create/apply
+		// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
 		// Smoke will rise from your browser w/o this
-		var fpai = 'bc5da65ee5e7f823282800672064eae0';
+		var fpai = '7177ae43badab8b5428ef2e2c7a66aac'; // did you put your key in quotes?
 		
 		// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
 		// if you like long flowing names, edit away
@@ -82,15 +81,16 @@ To make this work, you will need to:
 	
 				// get me some data!
 				$.getJSON(apiurl, function(data){
-		
+					console.log(data);
 					// short hand for photo object
 					p = data.photo;
 			
 					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
-					var photosrc = "http://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
+					var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
 			
 					// lets get fancy and put the image as a background; add black for portrait orientation images
-					$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
+					//JJ Since we are showing the image forget about background
+					//$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
 			
 					// title of photo goes atop
 					$('#title').html( p.title._content);
@@ -115,45 +115,66 @@ To make this work, you will need to:
 						}
 				
 						// build the link for the image page on ye old flickr site
-						var photolink = "http://flickr.com/photos/" + uid + "/" + p.id;
-					
-						// check for size parameter
-						if ( typeof qs['s'] == 'undefined' )  {
-							// use default size
-							ps == '';
-							imgwidth = 500;
-						} else {
-							// get specified size
-							ps = qs['s'];
-							imgwidth = ps_dims[ps];
-						}
-									
-						// create attribution strings
-						
-						str = '<h2>Attribution (Wordpress HTML)</h2><textarea rows="5" onClick="this.select()">[caption width="' + imgwidth +  '" align="aligncenter"]<a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" width="' + imgwidth + '"  alt="' + p.title._content +'" /></a><a title="' + p.title._content + '" href="' + photolink + '">cc licensed ( ' + cc_lic +' ) flickr photo</a> shared by <a href="http://flickr.com/people/' + uid + '">' + p.owner.username + '</a>[/caption]</textarea><h2>Attribution (text)</h2><textarea rows="2" onClick="this.select()">cc licensed (' + cc_lic + ') flickr photo by ' + p.owner.username + ': ' + photolink + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a>';
-					}
+						var photolink = "https://flickr.com/photos/" + uid + "/" + p.id;
 				
+			
+						// load stamped image
+						str = '<h2>Stamped image: right/control click &amp; Save As...</h2>';
+						// add a stamper
+						 stampsrc=photosrc + ps + '.jpg';
+						 stampuser=encodeURIComponent(p.owner.username);
+						 stampattrib=encodeURIComponent('creative commons licensed ( ' + cc_lic +' )');
+						var stampurl='http://johnjohnston.info/stamp/stampdl.php?i='+stampsrc+'&s='+stampuser+'%20-%20'+stampattrib;
+						str += '<p class="stamped"><img src="'+stampurl+'"> </p>';
+					}
+ 			
 					// make it shine up, BOOM
-					$('#attribution').html(str);				
+					$('#attribution').html(str);
+					$('#change_size').show();
+									
 				});
 			} else {
-			
-				// no query string variable. SADFACE
-				str = '<p>No flickr ID found. Maybe you are just checking the URL?</p>';
+		
+				// no query string variable found, SADFACE
+				str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="https://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
 				$('#attribution').html(str);
 			}
 		}
 
-		});
+	});
+	
+	var otherSizes =function(){
+		//quite a bit of repeated stuff here, should put in stampImage Function
+		ps = document.getElementById('change_size').value;
+		var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;	 
+	 stampsrc=photosrc + ps + '.jpg';
+	   
+	var stampurl='http://johnjohnston.info/stamp/stampdl.php?i='+stampsrc+'&s='+stampuser+'%20-%20'+stampattrib;
+	str = '<h2>Stamped image: right/control click &amp; Save As...</h2>';
+	str += '<p class="stamped"><img src="'+stampurl+'"> </p>';
+	
+	$('#attribution').html(str);
+	
+}
+
+ 
     </script>
    
   </head>
   <body>
 	  <div id="wrapper">
 	  	<div id="content">
-	  	<h1 id="title">Flickr CC Attribution Helper for Worpressers</h1>
-	  	<div id="attribution">Getting the lovely stuff... dogs chasing squirrels... turbines engaged... if this message does not go away soon, something is wrong.</div>
-	  	<div id="credits">flickr cc attribution helper by <a href="http://cogdog.info">cogdog</a> &bull; <a href="http://cogdog.github.io/flickr-cc-helper">cogdog.github.io/flickr-cc-helper</a></div>
+	  	<h1 id="title">Flickr CC Attribution Helper</h1>
+	  	<div id="attribution">Getting the lovely stuff... squirrels spinning the turbines... if this spinning does not stop, something has gone awry</div>
+		<select name="change_size" id="change_size"  onchange="otherSizes();" >
+			<option disabled selected >Swap Sizes</option>
+			<option value="_m">240px</option>
+			<option value="">500px</option>
+			<option value="_c">800</option>
+			<option value="_b">1024</option>
+		</select>
+		
+	  	<div id="credits">flickr cc attribution helper by cogdog &bull; cogdog.info Stamping by johnjohnston</div>
 	  	</div>
   </div>
   </body>
