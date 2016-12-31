@@ -20,122 +20,121 @@ To make this work on your own site, you will need to:
 -->
 
 
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>Flickr CC Attribution Helper</title>
-    <style>
-		body {margin:0; padding:0; font-family:Helvetica,Arial,san-serif;}
-		#wrapper {margin:0; padding:0; width:100%; height:400px}
-		#content {margin:0; padding:8px;width:100%; height:400px; background-color: white;}
-		h1 {margin:0; font-size:120;}
-		h2 {margin-bottom:0; font-size:100%}
-		#credits {font-size:80%; color:#666;margin-top:30px;}
-		#change_size{display:block;}
-    </style>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-    <script type="text/javascript">
-    
-    	// SETUP
-        // size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
-		var ps = '';
-		
-		// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
-		// Smoke will rise from your browser w/o this
-		var fpai = '7177ae43badab8b5428ef2e2c7a66aac'; // did you put your key in quotes?
-		
-		// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
-		// if you like long flowing names, edit away
-		var licenses = new Array( "", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND");
-		
-		
-		// CHECK QUERY PARAMS
-    	// get the query parameters for this page, we are looking for one called "flicked"
-    	// via http://stackoverflow.com/a/3855394/2418186
-    	
-    	var qs = (function(a) {
-    		if (a == "") return {};
-    		var b = {};
-    		for (var i = 0; i < a.length; ++i)
-			{
-				var p=a[i].split('=');
-				if (p.length != 2) continue;
-				b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-			}
-			return b;
-		})(window.location.search.substr(1).split('&'));
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<title>Flickr CC Attribution Helper</title>
+<style>
+	body {margin:0; padding:0; font-family:Helvetica,Arial,san-serif;}
+	#wrapper {margin:0; padding:0; width:100%; height:400px}
+	#content {margin:0; padding:8px;width:100%; height:400px; background-color: white;}
+	h1 {margin:0; font-size:120;}
+	h2 {margin-bottom:0; font-size:100%}
+	#credits {font-size:80%; color:#666;margin-top:30px;}
+	#change_size{display:block;}
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+	// SETUP
+	// size for image used in HTML '_m'=240px, ''=500px, '_c'=800px, '_b' = 1024px
+	var ps = '';
+
+	// flickr api key. Get yer own at https://www.flickr.com/services/apps/create/apply
+	// Smoke will rise from your browser w/o this
+	var fpai = '7177ae43badab8b5428ef2e2c7a66aac'; // did you put your key in quotes?
+
+	// labels for flickr licenses; first element is license = 0 all rights reserved (BOOOO)
+	// if you like long flowing names, edit away
+	var licenses = new Array("", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND");
 
 
-		$(document).ready(function(){
-		
-			if (fpai == 'YOUR-OWN-APIKEY') {
-				str = '<p>Hey, did you read the instructions? Check the source, dude/dudetter... you need to insert your own flickr API key in the code.</p>';
-				$('#attribution').html(str);
+	// CHECK QUERY PARAMS
+	// get the query parameters for this page, we are looking for one called "flicked"
+	// via http://stackoverflow.com/a/3855394/2418186
 
-			
-			} else {
-				if ( typeof qs['flickd'] != 'undefined' )  {
-		
+	var qs = (function(a) {
+		if (a == "") return {};
+		var b = {};
+		for (var i = 0; i < a.length; ++i) {
+			var p = a[i].split('=');
+			if (p.length != 2) continue;
+			b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+		}
+		return b;
+	})(window.location.search.substr(1).split('&'));
+
+
+	$(document).ready(function() {
+
+		if (fpai == 'YOUR-OWN-APIKEY') {
+			str = '<p>Hey, did you read the instructions? Check the source, dude/dudetter... you need to insert your own flickr API key in the code.</p>';
+			$('#attribution').html(str);
+
+
+		} else {
+			if (typeof qs['flickd'] != 'undefined') {
+
 				// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
 				// need to add a check for bad data returned
-				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
-	
+				var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd'];
+
 				// get me some data!
-				$.getJSON(apiurl, function(data){
+				$.getJSON(apiurl, function(data) {
 					console.log(data);
 					// short hand for photo object
 					p = data.photo;
-			
+
 					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
-					var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
-			
+					var photosrc = "https://farm" + p.farm + ".static.flickr.com/" + p.server + "/" + p.id + "_" + p.secret;
+
 					// lets get fancy and put the image as a background; add black for portrait orientation images
 					//JJ Since we are showing the image forget about background
 					//$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
-			
+
 					// title of photo goes atop
-					$('#title').html( p.title._content);
-			
+					$('#title').html(p.title._content);
+
 					// trap for stingy non creative commons licensed stuff, stingy bums
-					if ( p.license == 0 ) {
-						str ='<p>Sadly, this lovely image is not licensed under Creative Commons.</p>';
+					if (p.license == 0) {
+						str = '<p>Sadly, this lovely image is not licensed under Creative Commons.</p>';
 					} else {
 						// we got CC, get the string
 						var cc_lic = licenses[p.license];
-				
+
 						// for URLs, see if user has real name on flickr
 						if (p.owner.path_alias === null) {
-					
+
 							// rookie user! Use NSID
 							uid = p.owner.nsid;
-						
+
 						} else {
-					
+
 							// we got an alias, use that
 							uid = p.owner.path_alias;
 						}
-				
+
 						// build the link for the image page on ye old flickr site
 						var photolink = "https://flickr.com/photos/" + uid + "/" + p.id;
-				
-			
+
+
 						// load stamped image
 						str = '<h2>Stamped image: right/control click &amp; Save As...</h2>';
 						// add a stamper
-						 stampsrc=photosrc + ps + '.jpg';
-						 stampuser=encodeURIComponent(p.owner.username);
-						 stampattrib=encodeURIComponent('creative commons licensed ( ' + cc_lic +' )');
+						stampsrc = photosrc + ps + '.jpg';
+						stampuser = encodeURIComponent(p.owner.username);
+						stampattrib = encodeURIComponent('creative commons licensed ( ' + cc_lic + ' )');
 						//var stampurl='http://johnjohnston.info/stamp/stampdl-title.php?i='+stampsrc+'&id='+p.id+'&s='+ p.title._content +" "+stampuser+'%20-%20'+stampattrib;
-						var stampurl= makestampurl(stampsrc);
-						str += '<p class="stamped"><img src="'+stampurl+'"> </p>';
+						var stampurl = makestampurl(stampsrc);
+						str += '<p class="stamped"><img src="' + stampurl + '"> </p>';
 					}
- 			
+
 					// make it shine up, BOOM
 					$('#attribution').html(str);
 					$('#change_size').show();
-									
+
 				});
 			} else {
-		
+
 				// no query string variable found, SADFACE
 				str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="https://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
 				$('#attribution').html(str);
@@ -143,25 +142,27 @@ To make this work on your own site, you will need to:
 		}
 
 	});
+
 	
-	var otherSizes =function(){
+	var otherSizes = function() {
 		//quite a bit of repeated stuff here, should put in stampImage Function
 		ps = document.getElementById('change_size').value;
-		var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;	 
-	 stampsrc=photosrc + ps + '.jpg';
-	   
-	 var stampurl= makestampurl(stampsrc);
-	str = '<h2>Stamped image: right/control click &amp; Save As...</h2>';
-	str += '<p class="stamped"><img src="'+stampurl+'"> </p>';
-	
-	$('#attribution').html(str);
-	
-}
+		var photosrc = "https://farm" + p.farm + ".static.flickr.com/" + p.server + "/" + p.id + "_" + p.secret;
+		stampsrc = photosrc + ps + '.jpg';
 
-var makestampurl=function(stampsrc){
-	return 'http://johnjohnston.info/stamp/stampdl-title.php?i='+stampsrc+'&id='+p.id+'&s='+ p.title._content +" - "+stampuser+'%20-%20'+stampattrib;
+		var stampurl = makestampurl(stampsrc);
+		str = '<h2>Stamped image: right/control click &amp; Save As...</h2>';
+		str += '<p class="stamped"><img src="' + stampurl + '"> </p>';
+
+		$('#attribution').html(str);
+
+	}
+
+
+	var makestampurl=function(stampsrc){
+		return 'http://johnjohnston.info/stamp/stampdl-title.php?i='+stampsrc+'&id='+p.id+'&s='+ p.title._content +" - "+stampuser+'%20-%20'+stampattrib;
 	
-}
+	}
  
     </script>
    
@@ -175,8 +176,8 @@ var makestampurl=function(stampsrc){
 			<option disabled selected >Swap Sizes</option>
 			<option value="_m">240px</option>
 			<option value="">500px</option>
-			<option value="_c">800</option>
-			<option value="_b">1024</option>
+			<option value="_c">800px</option>
+			<option value="_b">1024px</option>
 		</select>
 		
 	  	<div id="credits">flickr cc attribution helper by cogdog &bull; cogdog.info Stamping by johnjohnston</div>
