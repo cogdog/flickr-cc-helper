@@ -124,7 +124,7 @@ To make this work on your own site, you will need to:
 						 stampsrc=photosrc + ps + '.jpg';
 						 stampuser=encodeURIComponent(p.owner.username);
 						 stampattrib=encodeURIComponent('creative commons licensed ( ' + cc_lic +' )');
-						var stampurl='http://johnjohnston.info/stamp/stampdl-title.php?i='+stampsrc+'&id='+p.id+'&s='+stampuser+'%20-%20'+stampattrib;
+						var stampurl='http://johnjohnston.info/stamp/stampdl-title.php?i='+stampsrc+'&id='+p.id+'&s='+ p.title._content +" "+stampuser+'%20-%20'+stampattrib;
 						str += '<p class="stamped"><img src="'+stampurl+'"> </p>';
 					}
  			
@@ -149,7 +149,7 @@ To make this work on your own site, you will need to:
 		var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;	 
 	 stampsrc=photosrc + ps + '.jpg';
 	   
-	var stampurl='http://johnjohnston.info/stamp/stampdl.php?i='+stampsrc+'&s='+stampuser+'%20-%20'+stampattrib;
+	var stampurl='http://johnjohnston.info/stamp/stampdl-title.php?i='+stampsrc+'&id='+p.id+'&s='+ p.title._content +" "+stampuser+'%20-%20'+stampattrib;
 	str = '<h2>Stamped image: right/control click &amp; Save As...</h2>';
 	str += '<p class="stamped"><img src="'+stampurl+'"> </p>';
 	
