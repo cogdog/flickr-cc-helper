@@ -161,7 +161,7 @@ To make this work on your own site, you will need to:
 
 	var makestampurl=function(stampsrc){
 		
-		return 'http://johnjohnston.info/stamp/stampdl-title.php?i='+stampsrc+'&id='+p.id+'&s='+ encodeURI(p.title._content) +" - "+(stampuser)+'%20-%20'+stampattrib;
+		return 'http://johnjohnston.info/stamp/stampdl-title.php?i='+stampsrc+'&id='+p.id+'&s='+ encodeURIComponent(p.title._content) +" - "+(stampuser)+'%20-%20'+stampattrib;
 	
 	}
  
