@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- 
+
+a CogDog Production because I love to give attribution for flickr photos and they
+suck at making it easy.
+
+http://cogdog.github.io/flickr-cc-helper/
+
+This HTML page provides all of the functionality to generate a pop up cut and paste
+atribution page from a bookmarklet tool. Each version of this can generate a different
+format for the attribution.
+
+To create a new format for attribution, fork and create a new version of this via
+https://github.com/cogdog/flickr-cc-helper
+-->
+
+
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Flickr CC Attribution Helper</title>
+
+    <link rel='stylesheet' type='text/css' href='assets/css/cc-attributor.css' />
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/cc-attributor.js"></script>
+
+    <script type="text/javascript">
+    /* Specific code to produce the attribution for this tool */
+    
+		$(document).ready(function(){
+		
+			// Flip the message status
+			ChangeStatusMessage();
+			
+			// Give the status messages a whirl, then do the work
+			setTimeout(function() {
+
+				// Do not pass go w/ a proper query paramater
+				if ( typeof qs['flickd'] != 'undefined' )  {
+	
+					// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
+					var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
+
+					// get me some data!
+					$.getJSON(apiurl, function(data){
+	
+						// short hand for photo object
+						p = data.photo;
+		
+						// build the base string for image URLs, everything bu the size code and the ".jpg" at end
+						var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
+		
+						// lets get fancy and put the image as a background; add black for portrait orientation images
+						$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
+		
+						// title of photo goes atop
+						$('#title').html( p.title._content);
+
+
+						// for URLs, see if user has real name on flickr
+						if (p.owner.path_alias === null) {
+		
+							// rookie user! Use NSID
+							uid = p.owner.nsid;
+			
+						} else {
+		
+							// we got an alias, use that
+							uid = p.owner.path_alias;
+						}
+			
+						// build the link for the image page on ye old flickr site
+						var photolink = "https://flickr.com/photos/" + uid + "/" + p.id;
+	
+						// trap for stingy non creative commons licensed stuff, stingy bums
+						if ( p.license == 0 ) {
+							attrib_str ='<p>Sadly, <a href="' + photolink + '">this lovely image</a> is not licensed for reuse... Maybe ask the owner to learn about <a href="https://www.flickr.com/creativecommons/">Creative Commons licenses available on flickr</a>, or ask them for permission to reuse.</p>';
+						} else {
+							// we got license!
+			
+							// check for size parameter
+							if ( typeof qs['s'] == 'undefined' )  {
+								// use default size
+								ps = '';
+							} else {
+								// get specified size
+								ps = qs['s'];
+							}
+			
+							// create attribution string
+							attrib_str = '<p><small><em>Copy image and attribution (full size image will show up), paste into medium editor. Then copy the attribution string into caption.</em></small></p><hr /><p><img src="' + photosrc + ps + '.jpg" id="mediumfcc" /></p><p>"' + p.title._content + '" flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + ' </p><hr/><h2>Download Image and Copy Attribution for Caption</h2><p><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a></p><textarea rows="3" onClick="this.select()">"' +  p.title._content + '" flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + '</textarea>';
+						}
+					
+						// stop the random status messages!
+						clearInterval(waiting_msg);
+						
+						// make it shine up, BOOM we got attribution for ya here
+						$('#attribution').html(attrib_str);				
+					});
+				} else {
+	
+					// no query string variable found, SADFACE
+					attrib_str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="https://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
+					
+					// We stuff  error message where the good stuff would normally go
+					$('#attribution').html(attrib_str);
+				}
+			
+			},  2000);
+	});
+    </script>
+
+    <style type='text/css'>
+    #mediumfcc {width: 40%;}
+    </style>
+    
+    
+  </head>
+  <body>
+	  <div id="wrapper">
+	  	<div id="content">
+	  	<h1 id="title">Flickr CC Attribution Helper For Medium</h1>
+	  	<div id="attribution"></div>
+	  	<div id="credits"><a href="https://cogdog.github.io/flickr-cc-helper/" target="_blank">flickr cc attribution helper</a> by @cogdog &bull; <a href="http://cog.dog" target="_blank">cog.dog</a></div>
+	  	</div>
+  </div>
+  </body>
+</html>
