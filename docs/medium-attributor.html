@@ -89,7 +89,7 @@ https://github.com/cogdog/flickr-cc-helper
 							}
 			
 							// create attribution string
-							attrib_str = '<p><small><em>Copy image and attribution (full size image will show up), paste into medium editor. Then copy the attribution string into caption.</em></small></p><hr /><p><img src="' + photosrc + ps + '.jpg" id="mediumfcc" /></p><p>"' + p.title._content + '" flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + ' </p><hr/><h2>Download Image and Copy Attribution for Caption</h2><p><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a></p><textarea rows="3" onClick="this.select()">"' +  p.title._content + '" flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + '</textarea>';
+							attrib_str = '<p><small><em>Copy image and attribution (full size image will show up), paste into medium editor. Then copy the attribution string into caption.</em></small></p><hr /><img src="' + photosrc + ps + '.jpg" id="mediumfcc" /><p><a title="' + p.title._content + '" href="' + photolink + '">' + p.title._content + '</a> flickr photo by <a href="https://flickr.com/people/' + uid + '">' + p.owner.username + '</a> shared ' + get_license_html(p.license) + '</p><hr/><h2>Download Image and Copy Attribution for Caption</h2><p><a href="' +  photosrc + ps + '.jpg" download>' +  photosrc + ps + '.jpg</a></p><textarea rows="3" onClick="this.select()">"' +  p.title._content + '" flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + '</textarea>';
 						}
 					
 						// stop the random status messages!
