@@ -26,6 +26,10 @@ function get_license_text( thelicense ) {
 		case "8":
 			return 'as a United States Government Work ( PD )';
 			break;
+		case "9":
+			return 'into the public domain using ( CC0 )';
+			break;
+
 		default:
 			return 'under a Creative Commons (' + licenses[thelicense] + ') license';
 	}
@@ -53,7 +57,7 @@ function get_license_html( thelicense ) {
 			return 'as a <a href="https://www.usa.gov/copyright.shtml">Public Domain United States Government Work ( PD )</a>';
 			break;
 		case "9":
-			return 'under a <a href="https://creativecommons.org/publicdomain/zero/1.0/">Public Domain Dedication Creative Commons ( CC0 ) license</a>';
+			return 'into the public domain using <a href="https://creativecommons.org/publicdomain/zero/1.0/">Public Domain Dedication Creative Commons ( CC0 )</a>';
 			break;
 		case "10":
 			return 'under a <a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Work Mark 1.0 Creative Commons</a> license';
