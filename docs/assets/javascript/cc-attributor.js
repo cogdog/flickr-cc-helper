@@ -114,6 +114,28 @@ function get_tasl_html( thelicense ) {
 	}
 }
 
+// Helper to return CC Best Practices TASL format https://wiki.creativecommons.org/wiki/Best_practices_for_attribution
+function get_license_md_tasl( thelicense ) {
+	switch( thelicense ) {
+		case "7":
+			return '[no copyright (Flickr Commons)](https://flickr.com/commons/usage/)';
+			break;
+		case "8":
+			return '[US Government PD](https://www.usa.gov/copyright.shtml)';
+			break;
+		case "9":
+			return '[CC0](https://creativecommons.org/publicdomain/zero/1.0/)';
+			break;
+		case "10":
+			return '[CC PD](https://creativecommons.org/publicdomain/mark/1.0/)';
+			break;
+		default:
+			cc_lic = licenses[thelicense];
+			return '[CC ' + cc_lic + '](https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/)';
+	}
+}
+
+
 
 // CHECK QUERY PARAMS -------------------------------------------------------------------
 // Get the URL query parameters for the tool page, we are looking for one called "flickd"
