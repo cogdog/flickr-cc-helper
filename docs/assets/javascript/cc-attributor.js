@@ -24,10 +24,10 @@ function get_license_text( thelicense ) {
 			return 'with no copyright restriction (Flickr Commons)';
 			break;
 		case "8":
-			return 'as a United States Government Work ( PD )';
+			return 'as a United States Government Work (PD)';
 			break;
 		case "9":
-			return 'into the public domain using ( CC0 )';
+			return 'into the public domain using (CC0)';
 			break;
 
 		default:
@@ -48,24 +48,47 @@ function get_tasl_text( thelicense ) {
 }
 
 // Helper to return a readable & linked license string
+function get_license_md( thelicense ) {
+	switch( thelicense ) {
+		case "7":
+			return 'with [no copyright restriction (Flickr Commons)](https://flickr.com/commons/usage/)';
+			break;
+		case "8":
+			return 'as a [Public Domain United States Government Work (PD)](https://www.usa.gov/copyright.shtml)';
+			break;
+		case "9":
+			return 'into the public domain using [Public Domain Dedication Creative Commons (CC0)](https://creativecommons.org/publicdomain/zero/1.0/)';
+			break;
+		case "10":
+			return 'into the public domain [Public Domain Work Mark 1.0 Creative Commons](https://creativecommons.org/publicdomain/mark/1.0/)<a href="">Public Domain Work Mark 1.0 Creative Commons</a>';
+			break;
+
+		default:
+			cc_lic = licenses[thelicense];
+			return 'under a [Creative Commons (' + cc_lic + ') license](https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/)';
+	}
+}
+
+
+// Helper to return a readable & linked license string
 function get_license_html( thelicense ) {
 	switch( thelicense ) {
 		case "7":
 			return 'with <a href="https://flickr.com/commons/usage/">no copyright restriction (Flickr Commons)</a>';
 			break;
 		case "8":
-			return 'as a <a href="https://www.usa.gov/copyright.shtml">Public Domain United States Government Work ( PD )</a>';
+			return 'as a <a href="https://www.usa.gov/copyright.shtml">Public Domain United States Government Work (PD)</a>';
 			break;
 		case "9":
-			return 'into the public domain using <a href="https://creativecommons.org/publicdomain/zero/1.0/">Public Domain Dedication Creative Commons ( CC0 )</a>';
+			return 'into the public domain using <a href="https://creativecommons.org/publicdomain/zero/1.0/">Public Domain Dedication Creative Commons (CC0)</a>';
 			break;
 		case "10":
-			return 'under a <a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Work Mark 1.0 Creative Commons</a> license';
+			return 'into the public domain using <a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Work Mark 1.0 Creative Commons</a> license';
 			break;
 
 		default:
 			cc_lic = licenses[thelicense];
-			return 'under a <a href="https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">Creative Commons ( ' + cc_lic +' ) license</a>';
+			return 'under a <a href="https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">Creative Commons (' + cc_lic +') license</a>';
 	}
 }
 
