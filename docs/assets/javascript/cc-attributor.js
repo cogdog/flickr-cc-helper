@@ -15,7 +15,7 @@ var fpai = '7177ae43badab8b5428ef2e2c7a66aac'; // did you put your key in quotes
 // labels for flickr licenses; first element is license = 0 aka all rights reserved (BOOOO, HISSSS)
 // If you like long flowing names, edit away
 // Now includes flickr commons, US GOVT work, and new PD licenses
-var licenses = new Array( "", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND", "", "PD", "CC0", "PD" );
+var licenses = new Array( "", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND", "", "PD", "CC0", "PDM" );
 
 // plain text license 
 function get_license_text( thelicense ) {
@@ -28,6 +28,9 @@ function get_license_text( thelicense ) {
 			break;
 		case "9":
 			return 'into the public domain using (CC0)';
+			break;
+		case "10":
+			return 'into the public domain using (PDM)';
 			break;
 
 		default:
@@ -57,10 +60,10 @@ function get_license_md( thelicense ) {
 			return 'as a [Public Domain United States Government Work (PD)](https://www.usa.gov/copyright.shtml)';
 			break;
 		case "9":
-			return 'into the public domain using [Public Domain Dedication Creative Commons (CC0)](https://creativecommons.org/publicdomain/zero/1.0/)';
+			return 'into the public domain using [Creative Commons Public Domain Dedication (CC0)](https://creativecommons.org/publicdomain/zero/1.0/)';
 			break;
 		case "10":
-			return 'into the public domain [Public Domain Work Mark 1.0 Creative Commons](https://creativecommons.org/publicdomain/mark/1.0/)<a href="">Public Domain Work Mark 1.0 Creative Commons</a>';
+			return 'with no copyright restrictions using [Creative Commons Public Domain Mark](https://creativecommons.org/publicdomain/mark/1.0/)';
 			break;
 
 		default:
@@ -80,10 +83,10 @@ function get_license_html( thelicense ) {
 			return 'as a <a href="https://www.usa.gov/copyright.shtml">Public Domain United States Government Work (PD)</a>';
 			break;
 		case "9":
-			return 'into the public domain using <a href="https://creativecommons.org/publicdomain/zero/1.0/">Public Domain Dedication Creative Commons (CC0)</a>';
+			return 'into the public domain using <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Public Domain Dedication (CC0)</a>';
 			break;
 		case "10":
-			return 'into the public domain using <a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Work Mark 1.0 Creative Commons</a> license';
+			return 'with no copyright restrictions using <a href="https://creativecommons.org/publicdomain/mark/1.0/">Creative Commons Public Domain Mark (PDM)</a>';
 			break;
 
 		default:
@@ -105,7 +108,7 @@ function get_tasl_html( thelicense ) {
 			return '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>';
 			break;
 		case "10":
-			return '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC PD</a>';
+			return '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC PDM</a>';
 			break;
 
 		default:
@@ -127,7 +130,7 @@ function get_license_md_tasl( thelicense ) {
 			return '[CC0](https://creativecommons.org/publicdomain/zero/1.0/)';
 			break;
 		case "10":
-			return '[CC PD](https://creativecommons.org/publicdomain/mark/1.0/)';
+			return '[CC PDM](https://creativecommons.org/publicdomain/mark/1.0/)';
 			break;
 		default:
 			cc_lic = licenses[thelicense];
