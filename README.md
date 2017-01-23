@@ -14,7 +14,7 @@ Darn you flickr! You make it so complex to give proper attribution for Creative 
 
 In 2009 I thought there should be an easier way and created the [first flickr cc attribution helper](http://userscripts.org/scripts/show/49395) as a Firefox Greasemonkey script.  The script detected if a given flickr photo was Create Commons licensed. If so, it inserted directly into the flickr page a cut and paste set of HTML that had everything to put into a blog post- the image code to display the photo, a link back to the original, and a display of the license, the photo owner, and links back.  It also provided a second text attribution string that could be used in documents or presentations.
 
-![how I like to give attribution](docs/images/cc-sttribution-example.jpg "cc logo")
+![how I like to give attribution](docs/images/cc-attribution-example.jpg "cc logo")
 
 [I later modified this script](http://cogdogblog.com/flickr-cc-helper/) to work as a [Chrome extension](https://chrome.google.com/webstore/detail/flickr-cc-attribution-hel/gcnphdhkhoepofbahkgfifigellgklbp). I've used this on literally hundreds of blog posts primarily on [CogDogBlog](http://cogdogblog.com/).
 
@@ -34,14 +34,11 @@ As an addition, when you make the bookmarklet tool, you have options to change t
 
 This new version takes a different approach; a person interested  in using the tool intalls a [web browser bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). Just drag the link text on the blur button to your browser's bookmark bar.
 
-Upon viewing a flickr photo, the bookmarklet spawns a window containing the one click copy attribution. If you are viewing a flickr photo licensed under creative commons, it will launch a small window with the one click copy/paste attribution fit for use in a blog post or a presentation.
+Upon viewing a flickr photo, if you are viewing a flickr photo licensed under creative commons, it will launch a small window with a few one click copy/paste attributions fit for use in a blog post or a presentation.
 
 ![Screen shot of image helper](docs/images/flickr-cc-helper-in-action.jpg "Example")
 
-
-Yes pop up windows are not elegant. Hopefully in the future I might be able to generate it as a light-box overlay. Or maybe you can fork this code, and do it for me?
-
-
+The first one is a full HTML attribution with the image embedded, suitable for cutting and pasting into an HTML editor. The second is the attribution in HTML, to be maybe for a footer credit or a caption field. The third is text only, for presentation slides or written works.
 
 THE EASY WAY VS THE CUSTOM WAY
 -----
@@ -59,18 +56,18 @@ These pages act as plugins, so the bookmarklet maker can make different varietie
 3. Wordpress - embeds the image but wraps it in the [caption]...[/caption] short codes that Wordpress themes use to format images with captions.
 4. Wordpress CC TASL - same but uses the format from [Creative Commons Best Practices for Attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution)
 5. Stamped - generates a downloadable copy of the image with the attribution stamped right into it (thanks to [John Johnston](http://johnjohnston.info) who created a [nifty mobile version of a flicker finder / attribution stamper](http://johnjohnston.info/flickrcctouch/).
-6. Markdown - Suitable for static blog generators, Github, and other popular Markdown-friendly tools by [Glen Smith](http://blogs.bytecode.com.au/glen).
-
+6. Markdown - Suitable for static blog generators, Github, and other popular Markdown-friendly tools, original by [Glen Smith](http://blogs.bytecode.com.au/glen).
+7. Markdown -CC TASL - Suitable for static blog generators, Github, and other popular Markdown-friendly tools  but uses the format from [Creative Commons Best Practices for Attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution)
 			
 If you would like to customize the attribution output in any way, or just prefer to run your own,  you can grab a copy of the attribtion helper on github here, fork and modify, and run on your own web server. It just needs to be available at a public web page. And you can still use the bookmarklet generator below to build your browser tool.
 
 TO RUN YOUR OWN MAKER
 ------------
 
-You need place to put a HTML page at a public URL and you will need to get your own Flickr API key 
+Download this repo and use the docs folder for your own site. You can use the entire generator or just your own modified tool page. You need place to put a HTML page at a public URL and you should get your own Flickr API key 
 
 1. Get a flickr API key https://www.flickr.com/services/apps/create/apply
-2. Edit the [cc-attributor.html](https://github.com/cogdog/flickr-cc-helper/blob/master/docs/cc-attributor.html) to enter the API key value at
+2. Edit the `assets/javascript/cc-attributor.js` to enter the API key value at
 
 	var fpai = 'YOUR-OWN-APIKEY';
 
