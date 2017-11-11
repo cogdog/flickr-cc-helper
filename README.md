@@ -6,6 +6,8 @@ by Alan Levine http://cogdog.info/
 
 Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [make your own now](http://cogdog.github.io/flickr-cc-helper/).
 
+**Note** *This bookmarklet tool currently works in Chrome and Safari web browsers but not Firefox (do to Content Security Policy restrictions). There might be options, but so far they are eluding me.*
+
 
 WHY
 -----
