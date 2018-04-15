@@ -11,8 +11,10 @@ This HTML page provides all of the functionality to generate a pop up cut and pa
 atribution page from a bookmarklet tool. Each version of this can generate a different
 format for the attribution.
 
+This version creates a 'stamped' in your browser, an image with the text added can be downloaded. John Johnston
+
 To create a new format for attribution, fork and create a new version of this via
-https://github.com/cogdog/flickr-cc-helper
+https://github.com/cogdog/flickr-cc-helper That is what I did ;-)
 -->
 
 
@@ -117,7 +119,6 @@ https://github.com/cogdog/flickr-cc-helper
 	});
 	
 	var loadimage = function(photoscr,credits,attrib_url){
-		//alert ("imageload");
 		img = document.createElement('img');
 	
 		img.onload = function() {
@@ -163,7 +164,6 @@ https://github.com/cogdog/flickr-cc-helper
 
 			var dataURL = tempCanvas.toDataURL('image/jpeg');
 			$('#attribution').html("<p>Here is an image with the attribution <strong>stamped on</strong>, download it in the usual way.</p><img id='currentphoto'  style='max-width:100%' src='" + dataURL + "'>");
-			//loadPhotoInfo(info.id, shorturl);
 		}
 		img.crossOrigin = 'anonymous';
 			img.src = photoscr+ps+".jpg";
