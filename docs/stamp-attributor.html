@@ -124,8 +124,9 @@ To make this work on your own site, you will need to:
 						 stampsrc=photosrc + ps + '.jpg';
 						 stampuser=encodeURIComponent(p.owner.username);
 						 stampattrib=encodeURIComponent('creative commons licensed ( ' + cc_lic +' )');
-
- 					}
+						var stampurl='http://johnjohnston.info/stamp/stampdl.php?i='+stampsrc+'&s='+stampuser+'%20-%20'+stampattrib;
+						str += '<p class="stamped"><img src="'+stampurl+'"> </p>';
+					}
  			
 					// make it shine up, BOOM
 					$('#attribution').html(str);
@@ -140,96 +141,6 @@ To make this work on your own site, you will need to:
 			}
 		}
 
-
-// JJ FUNCTIONS
-		
-	 	var loadimage = function( imageurl) {
-
-	 		if (imageurl === undefined) {
-	 			imageurl = "";
-	 		}
-
-
-	 				$('#stamp').html("<img src='wait.gif' style='max-width:100%'>");
-	 				//img = new Image();
-					 img = document.createElement('img');
-	 				img.onload = function() {
-
-	 						var height = img.height;
-	 						var width = img.width;
-	 						//console.log(height);
-	 						// code here to use the dimensions
-	 						var info = currentphotos.photos.photo[i];
-	 						//if(mycanvas){mycanvas.remove();}
-	 						mycanvas = document.createElement("canvas");
-
-	 						mycanvas.id = "mycanvas";
-	 						mycanvas.width = width;
-	 						mycanvas.height = height + 54;
-	 						var ctx = mycanvas.getContext("2d");
-	 						ctx.fillStyle = "black";
-	 						ctx.fillRect(0, 0, mycanvas.width, mycanvas.height);
-	 						ctx.drawImage(img, 0, 0);
-	 						/*
-	 						var thelicense = flickrlicense(info.license);
-	 							 						var thisid = info.id;
-	 							 						//console.log(thisid);
-	 							 						var shorturl = "https://flic.kr/p/" + base58.encode(parseInt(thisid));*/
-	 						
-	 						//console.log(shorturl);
-	 						var credits = stampattrib;
-
-	 						//ctx.font="20px Georgia";
-	 						var thefont = "Helvetica";
-	 						var thefontsize = 24;
-	 						var fontinfo = "'" + credits + "', '" + thefontsize + "px'" + "' '" + thefont + "'";
-	 						//console.log(fontinfo);
-
-	 						do {
-	 							thefontsize--;
-	 							ctx.font = thefontsize + "px Helvetica";
-	 						} while (ctx.measureText(credits).width > (mycanvas.width - 10))
-
-
-	 						ctx.fillStyle = "#ffffff";
-	 						ctx.fillText(credits, 10, height + (thefontsize));
-	 						ctx.fillText(shorturl, 10, height + (thefontsize * 2) + 6);
-
-	 						var tempCanvas = document.createElement("canvas"),
-	 							tCtx = tempCanvas.getContext("2d");
-
-	 						tempCanvas.width = width;
-	 						tempCanvas.height = height + (thefontsize * 2) + 8;
-
-	 						tCtx.drawImage(mycanvas, 0, 0);
-
-
-	 						var dataURL = tempCanvas.toDataURL('image/jpeg');
-
-	 						$('#stamp').html("<img id='currentphoto' download='" + info.title + "' style='max-width:100%' src='" + dataURL + "'>");
-	 						loadPhotoInfo(info.id, shorturl);
-	 					}
-	 					//str.indexOf("welcome");
-	 					//if( imageurl && typeof(imageurl) !== "undefined"){
-	 				console.log((imageurl.indexOf('https')));
-					img.crossOrigin = 'anonymous';
-	 				if (imageurl.indexOf('https') == 0) {
-					
-						//img.setAttribute('crossOrigin','anonymous');
-	 					img.src = imageurl;
-
-	 				} else {
-	 					if (currentphotos.photos.photo[i].url_z) {
-	 						img.src = currentphotos.photos.photo[i].url_z;
-	 					} else {
-	 						img.src = currentphotos.photos.photo[i].url_m;
-	 					}
-	 				}
-	 				
-	 		}
-
-		
-		
 	});
 	
 	var otherSizes =function(){
