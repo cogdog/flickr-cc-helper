@@ -91,7 +91,7 @@ https://github.com/cogdog/flickr-cc-helper
 			
 							// create attribution string
 							//photosrc
-							attrib_str_text = p.title._content + '" flickr photo by ' + p.owner.username + ' shared ' + get_license_text(p.license);
+							attrib_str_text = p.title._content + '" flickr photo by ' + p.owner.username + ' shared ' + get_tasl_text(p.license);
 							attrib_url=photolink;
 							attrib_str="loading...";
 							
@@ -121,7 +121,7 @@ https://github.com/cogdog/flickr-cc-helper
 		img = document.createElement('img');
 	
 		img.onload = function() {
-
+			
 			var height = img.height;
 			var width = img.width;
 			// code here to use the dimensions
@@ -173,9 +173,9 @@ https://github.com/cogdog/flickr-cc-helper
   <body>
 	  <div id="wrapper">
 	  	<div id="content">
-	  	<h1 id="title">Flickr CC Attribution Stamper Helper</h1>
+	  	<h1 id="title">Flickr CC Attribution Helper</h1>
 	  	<div id="attribution"></div>
-	  	<div id="credits"><a href="https://cogdog.github.io/flickr-cc-helper/" target="_blank">flickr cc attribution helper</a> by @cogdog &bull; <a href="http://cog.dog" target="_blank">cog.dog</a>  stamping extension @johnjohnston <a href="http://johnjohnston.info">john johnston</a></div>
+	  	<div id="credits"><a href="https://cogdog.github.io/flickr-cc-helper/" target="_blank">flickr cc attribution helper</a> by @cogdog &bull; <a href="http://cog.dog" target="_blank">cog.dog</a> stamping extension @johnjohnston <a href="http://johnjohnston.info">john johnston</a></div>
 	  	</div>
   </div>
   </body>
