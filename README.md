@@ -38,6 +38,9 @@ As an addition, when you make the bookmarklet tool, you have options to change t
 
 Yes pop up windows are not elegant. Hopefully in the future I might be able to generate it as a light-box overlay. Or maybe you can fork this code, and do it for me?
 
+##### For Firefox users:
+If you are using Firefox you might notice that the window does not open when using the tool on Flickr. This has to do with an issue with the Firefox's CSP. A quick workaround for this problem is to install this [extension](https://addons.mozilla.org/en-US/firefox/addon/bookmarklets-context-menu/) and use the bookmarklet from there.
+
 THE EASY WAY VS THE CUSTOM WAY
 -----
 
