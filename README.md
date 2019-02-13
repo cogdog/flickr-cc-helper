@@ -15,7 +15,7 @@ by Alan Levine http://cog.dog/
 
 Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [make your own now](http://cogdog.github.io/flickr-cc-helper/).
 
-**Note** This bookmarklet tool currently works as us in Chrome and Safari web browsers but not Firefox (do to Content Security Policy restrictions).
+**Note** This bookmarklet tool currently works as is in Chrome and Safari web browsers but not Firefox (do to Content Security Policy restrictions).
 
 If you are using Firefox you might notice that the window does not open when using the tool on Flickr. This has to do with an issue with the Firefox's Content Security Policy restrictions. A quick workaround for this problem is to install the [Bookmarklets Context Menu Extension](https://addons.mozilla.org/en-US/firefox/addon/bookmarklets-context-menu/) and use the bookmarklet from the contextual menu (all your bookmarklets will be available there). Thanks to [Jocapear](https://github.com/Jocapear)
 
