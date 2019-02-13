@@ -15,16 +15,20 @@ by Alan Levine http://cog.dog/
 
 Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [make your own now](http://cogdog.github.io/flickr-cc-helper/).
 
-**Note** This bookmarklet tool currently works as is in Chrome and Safari web browsers but not Firefox (do to Content Security Policy restrictions).
+
+## USING
+
+This tool will create the code for a bookmarklet tool. You can then drag it to your browser bar. Whenever viewing a flickr image that is open licensed, clicking the tool will open a small window with different options of attribution code you can copy and paste as needed.
+
+![Screen shot of image helper](docs/images/flickr-cc-helper-in-action.jpg "Example")
+
+**Note** This bookmarklet tool currently works as is in Chrome and Safari web browsers but not Firefox (due to Content Security Policy restrictions).
 
 If you are using Firefox you might notice that the window does not open when using the tool on Flickr. This has to do with an issue with the Firefox's Content Security Policy restrictions. A quick workaround for this problem is to install the [Bookmarklets Context Menu Extension](https://addons.mozilla.org/en-US/firefox/addon/bookmarklets-context-menu/) and use the bookmarklet from the contextual menu (all your bookmarklets will be available there). Thanks to [Jocapear](https://github.com/Jocapear)
 
 ![using in firefox from contextual menu](docs/images/firefox-helper.jpg "using in firefox from contextual menu")
 
-
-
 ## WHY
-
 
 Darn you flickr! You make it so complex to give proper attribution for Creative Commons images. The photos available are a bag of gold-- [collection of creative commons licensed photos on flickr](http://flickr.com/creativecommon). Yet to use said images to create a blog post requires no less than 12 clicks and 4 copy/paste operations (estimate).
 
@@ -65,12 +69,12 @@ If you want to do basic attribution, you can use the [bookmarklet generating too
 
 The work of the attribution helper is done via an HTML page boosted with some jQuery code. The bookmarklet passes the unique flickr id (it's in the URL), and the tool page uses the [flickr api vis JSON](https://www.flickr.com/services/api/response.json.html) to get all of the information needed to build and display an attribution string.
 
-These pages act as plugins, so the bookmarklet maker can make different varieties of output. There are currently [three flavors of attributions generated](http://cogdog.github.io/flickr-cc-helper/flavors.html)
+These pages act as plugins, so the bookmarklet maker can make different varieties of output. There are currently [various flavors of attributions generated](http://cogdog.github.io/flickr-cc-helper/flavors.html). Note that the HTML copied from the WordPress versions can be pasted directly into a block if you are brave enough to be using the new Gutenberg editor.
 
 1. Plain HTML - embeds the image and puts a proper and linked attribution text below
 2. Plain HTML CC TASL - uses the format from [Creative Commons Best Practices for Attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution)
-3. Wordpress - embeds the image but wraps it in the [caption]...[/caption] short codes that Wordpress themes use to format images with captions.
-4. Wordpress CC TASL - same but uses the format from [Creative Commons Best Practices for Attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution)
+3. WordPress - embeds the image but wraps it in the [caption]...[/caption] short codes that Wordpress themes use to format images with captions.
+4. WordPress CC TASL - same but uses the format from [Creative Commons Best Practices for Attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution)
 5. Stamped - generates a downloadable copy of the image with the attribution stamped right into it (thanks to [John Johnston](http://johnjohnston.info) who created a [nifty mobile version of a flicker finder / attribution stamper](http://johnjohnston.info/flickrcctouch/).
 6. Markdown - Suitable for static blog generators, Github, and other popular Markdown-friendly tools, original by [Glen Smith](http://blogs.bytecode.com.au/glen).
 7. Markdown -CC TASL - Suitable for static blog generators, Github, and other popular Markdown-friendly tools  but uses the format from [Creative Commons Best Practices for Attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution)
@@ -78,7 +82,6 @@ These pages act as plugins, so the bookmarklet maker can make different varietie
 If you would like to customize the attribution output in any way, or just prefer to run your own,  you can grab a copy of the attribtion helper on github here, fork and modify, and run on your own web server. It just needs to be available at a public web page. And you can still use the bookmarklet generator below to build your browser tool.
 
 ## TO RUN YOUR OWN MAKER
-
 
 Download this repo and use the docs folder for your own site. You can use the entire generator or just your own modified tool page. You need place to put a HTML page at a public URL and you should get your own Flickr API key 
 
