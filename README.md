@@ -19,7 +19,7 @@ Turns the laborious task of giving attribution of creative commons flickr photos
 
 If you are using Firefox you might notice that the window does not open when using the tool on Flickr. This has to do with an issue with the Firefox's Content Security Policy restrictions. A quick workaround for this problem is to install the [Bookmarklets Context Menu Extension](https://addons.mozilla.org/en-US/firefox/addon/bookmarklets-context-menu/) and use the bookmarklet from the contextual menu (all your bookmarklets will be available there). Thanks to [Jocapear](https://github.com/Jocapear)
 
-![using in firefox from contextual menu](docs/images/flickr-cc-logo.jpg "using in firefox from contextual menu")
+![using in firefox from contextual menu](docs/images/firefox-helper "using in firefox from contextual menu")
 
 
 
