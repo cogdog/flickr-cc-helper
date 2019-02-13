@@ -1,5 +1,5 @@
-Flickr Creative Commons Attribution Helper
-=========================
+# Flickr Creative Commons Attribution Helper
+
 by Alan Levine http://cog.dog/
 
 
@@ -15,11 +15,16 @@ by Alan Levine http://cog.dog/
 
 Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [make your own now](http://cogdog.github.io/flickr-cc-helper/).
 
-**Note** *This bookmarklet tool currently works in Chrome and Safari web browsers but not Firefox (do to Content Security Policy restrictions). There might be options, but so far they are eluding me.*
+**Note** This bookmarklet tool currently works as us in Chrome and Safari web browsers but not Firefox (do to Content Security Policy restrictions).
+
+If you are using Firefox you might notice that the window does not open when using the tool on Flickr. This has to do with an issue with the Firefox's Content Security Policy restrictions. A quick workaround for this problem is to install the [Bookmarklets Context Menu Extension](https://addons.mozilla.org/en-US/firefox/addon/bookmarklets-context-menu/) and use the bookmarklet from the contextual menu (all your bookmarklets will be available there). Thanks to [Jocapear](https://github.com/Jocapear)
+
+![using in firefox from contextual menu](docs/images/flickr-cc-logo.jpg "using in firefox from contextual menu")
 
 
-WHY
------
+
+## WHY
+
 
 Darn you flickr! You make it so complex to give proper attribution for Creative Commons images. The photos available are a bag of gold-- [collection of creative commons licensed photos on flickr](http://flickr.com/creativecommon). Yet to use said images to create a blog post requires no less than 12 clicks and 4 copy/paste operations (estimate).
 
@@ -39,8 +44,8 @@ Because attribution is the right thing to do, to express gratitude, no matter th
 
 Always Be Attributing.
 	
-THE WAY FORWARD
------
+## THE WAY FORWARD
+
 As an addition, when you make the bookmarklet tool, you have options to change the size of image used, so you can make use of flickr's different image widths (240, 500, 620, 800, 1024 px). Note that the larger sizes will not work if the original is of smaller dimensions.
 
 This new version takes a different approach; a person interested  in using the tool intalls a [web browser bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). Just drag the link text on the blur button to your browser's bookmark bar.
@@ -72,8 +77,8 @@ These pages act as plugins, so the bookmarklet maker can make different varietie
 			
 If you would like to customize the attribution output in any way, or just prefer to run your own,  you can grab a copy of the attribtion helper on github here, fork and modify, and run on your own web server. It just needs to be available at a public web page. And you can still use the bookmarklet generator below to build your browser tool.
 
-TO RUN YOUR OWN MAKER
-------------
+## TO RUN YOUR OWN MAKER
+
 
 Download this repo and use the docs folder for your own site. You can use the entire generator or just your own modified tool page. You need place to put a HTML page at a public URL and you should get your own Flickr API key 
 
