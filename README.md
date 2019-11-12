@@ -8,6 +8,10 @@ by Alan Levine http://cog.dog/
 
 [![Support me on Patreon](http://cogdog.github.io/images/badge-patreon.png)](https://patreon.com/cogdog) [![Support me on via PayPal](http://cogdog.github.io/images/badge-paypal.png)](https://paypal.me/cogdog)
 
+Those who support [at the Roll te Credits Tier and up level on patreon](https://patreon.com/cogdog) get mention in the flickr cc attributor's random loading messages. Think of the fame! Thanks and mentions already included for
+
+*Anne-Marie Scott, Autumm Caines, Barbara Ganley, Brian Lamb, Catherine Cronin, Clint Lalonde, Hugh Blackmer, Irwin DeVries, Jim Luke, Jim McGee, Mark Otter, Rajiv Jhangiani, Robert Daniel, Robin DeRosa, Sheila MacNeill, Terry Greene, Lorna Campbell.*
+
 ----- 
 
 
