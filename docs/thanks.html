@@ -11,6 +11,13 @@
 		<link rel='stylesheet' type='text/css' href='assets/css/prettify.css' />
 		<style type='text/css'>
 			pre { width: 70%; margin: 2em 0}
+			#attribution {
+				 font-family: monospace;
+				margin: 1em 10%;
+				padding: 0.5em;
+				border: 1px #333 dotted;
+				text-align: center;
+    		}
 		</style>	
 
 		<script type='text/javascript' src='assets/javascript/prettify.js'></script>
@@ -46,11 +53,17 @@
 			
 			<h2>Thanks for the Support</h2>
 			
-			<p>Those who support me <a href="https://patreon.com/cogdog">at the Roll the Credits Tier and up level on patreon</a> get mention in the flickr cc attributor's random loading messages. Think of the fame! Thanks and mentions already included go to:</p>
+			<p>Those who support me <a href="https://patreon.com/cogdog">at the Roll the Credits Tier and up level on patreon</a> get a mention in the flickr cc attributor's random loading messages, like:</p>
+			
+			<p id="attribution"></p>
+			
+			
+			<p>Thanks and mentions already included go to:</p>
 
-<p><em>Anne-Marie Scott, Autumm Caines, Barbara Ganley, Brian Lamb, Catherine Cronin, Clint Lalonde, Hugh Blackmer, Irwin DeVries, Jim Luke, Jim McGee, Mark Otter, Rajiv Jhangiani, Robert Daniel, Robin DeRosa, Sheila MacNeill, Terry Greene, Lorna Campbell, Frances Bell.</em></p>
+<p><em>Anne-Marie Scott, Autumm Caines, Barbara Ganley, Brian Lamb, Catherine Cronin, Clint Lalonde, Hugh Blackmer, Irwin DeVries, Jim Luke, Jim McGee, Mark Otter, Rajiv Jhangiani, Robert Daniel, Robin DeRosa, Sheila MacNeill, Terry Greene, Lorna Campbell.</em></p>
 
 <p><a href="https://www.patreon.com/bePatron?u=3348483" data-patreon-widget-type="become-patron-button">Become a Patron!<script src="https://c6.patreon.com/becomePatronButton.bundle.js"></script></a><a></a></p>
+
 
 		
 		</div>		
@@ -63,6 +76,20 @@
 
 		
 		<a href='https://github.com/cogdog/flickr-cc-helper' class='github-ribbon'><img src='assets/images/github-ribbons/white.png' /></a>
-	</div>	
+	</div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/cc-attributor.js"></script>
+	
+	<script type="text/javascript">
+    	var attrib_str = 'something';
+    	
+		$(document).ready(function(){
+			// dummy to keep the messages rolling
+			
+			// Flip the message status
+			ChangeStatusMessage();
+		});
+	
+	</script>	
 	</body>
 </html>
