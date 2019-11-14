@@ -10,7 +10,7 @@ by Alan Levine http://cog.dog/
 
 Those who support [at the Roll the Credits Tier and up level on patreon](https://patreon.com/cogdog) get mention in the flickr cc attributor's random loading messages. Think of the fame! Thanks and mentions already included for
 
-*Anne-Marie Scott, Autumm Caines, Barbara Ganley, Brian Lamb, Catherine Cronin, Clint Lalonde, Hugh Blackmer, Irwin DeVries, Jim Luke, Jim McGee, Mark Otter, Rajiv Jhangiani, Robert Daniel, Robin DeRosa, Sheila MacNeill, Terry Greene, Lorna Campbell, Frances Bell, JR Dingwall.*
+*Anne-Marie Scott, Autumm Caines, Barbara Ganley, Brian Lamb, Catherine Cronin, Clint Lalonde, Hugh Blackmer, Irwin DeVries, Jim Luke, Jim McGee, Mark Otter, Rajiv Jhangiani, Robert Daniel, Robin DeRosa, Sheila MacNeill, Terry Greene, Lorna Campbell, Frances Bell, JR Dingwall, Shannon Hauser.*
 
 ----- 
 
