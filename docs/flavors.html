@@ -46,104 +46,145 @@
 			<h2>Flavors of Tools</h2>
 			<p>The kind of attribution tools available as options from the bookmarklet maker.</p>
 			
-			
+	
+			<hr />
+					
 			<h3>Basic HTML</h3>
-			<p>Suitable for any blog or web page, caption below with linked attribution.</p>
+			<p>Suitable for any web page that can take raw HTML--  caption below image with linked attribution.</p>
 			
 			<h4>Attribution w/ Image (HTML)</h4>
-			<a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"><img src="https://farm9.static.flickr.com/8490/8188824613_037d664dc0_z.jpg" /></a><br /><small><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a> </small>
+			<a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"><img src="https://live.staticflickr.com/8490/8188824613_037d664dc0_z.jpg" /></a><br /><small><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a> </small>
 			
-			<pre>&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;&lt;img src="https://farm9.static.flickr.com/8490/8188824613_037d664dc0_z.jpg" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;small&gt;&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;Life is Sharing&lt;/a&gt; flickr photo by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; shared under a &lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt;Creative Commons (BY) license&lt;/a&gt; &lt;/small&gt;
+			<pre>&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;&lt;img src="https://live.staticflickr.com/8490/8188824613_037d664dc0_z.jpg" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;small&gt;&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;Life is Sharing&lt;/a&gt; flickr photo by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; shared under a &lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt;Creative Commons (BY) license&lt;/a&gt; &lt;/small&gt;
 			</pre>
 			
 			<h4>Attribution only (HTML)</h4>
 			
-			<a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a> </small>
+			<p><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a> </small></p>
 			
-			<pre>&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;Life is Sharing&lt;/a&gt; flickr photo by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; shared under a &lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt;Creative Commons (BY) license&lt;/a&gt; &lt;/small&gt;</pre>
+<pre>&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;Life is Sharing&lt;/a&gt; 
+flickr photo by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; 
+shared under a 
+&lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt;Creative Commons (BY) license&lt;/a&gt; 
+</pre>
+
+
 			
-			<h4>Attribution text only<h4>
+			<h4>Attribution text only</h4>
 			
 			<p>"Life is Sharing" flickr photo by cogdogblog https://flickr.com/photos/cogdog/8188824613 shared under a Creative Commons (BY) license</p>
 			
+<pre>
+"Life is Sharing" flickr photo by cogdogblog 
+https://flickr.com/photos/cogdog/8188824613 shared under a 
+Creative Commons (BY) license
+</pre>
+			
+			<hr />
+			
+			<h3>Wordpress 5+ Block Attributor (aka Gutenberg)</h3>
+			<p>As of WordPress version 5.3 the cut and paste code wrapped in <tt>[caption] ... [/caption]</tt> shortcodes no longer works. This new attribution format will create the code to insert into a block the flickr image using WordPress native support for flickr automatic embeds (thus sizing automatically to fit the current theme) and add a second paragraph block for the attribution.  </p>	
 			
 			
-			<h3>CC TASL Best Practices HTML</h3>
-			<p>Using the format Creative Commons recommends as <a href="https://wiki.creativecommons.org/wiki/Best_practices_for_attribution" target="_blank">best practice format</a>.</p>
+			<h4>Attribution w/image (WordPress Block Editor)</h4>
+			
+			<figure class="wp-block-embed-flickr wp-block-embed is-type-photo is-provider-flickr"><div class="wp-block-embed__wrapper">
+<a href="https://flickr.com/photos/cogdog/8188824613"><img src="https://live.staticflickr.com/8490/8188824613_037d664dc0_b.jpg" alt="Life is Sharing" width="1024" height="683" scale="0"></a>
+</div></figure>
+
+<p><a href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a></p>
+
+			<pre>&lt;figure class="wp-block-embed-flickr aligncenter wp-block-embed is-type-photo is-provider-flickr"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
+https://flickr.com/photos/cogdog/8188824613
+&lt;/div&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;a href="https://flickr.com/photos/cogdog/8188824613"&gt;Life is Sharing&lt;/a&gt; flickr photo by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; shared under a &lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt;Creative Commons (BY) license&lt;/a&gt;&lt;/p&gt;</pre>
+
+
+			<h4>Attribution only (linked)</h4>
+			
+			<p><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a> </small></p>
+			
+<pre>&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;Life is Sharing&lt;/a&gt; 
+flickr photo by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; 
+shared under a 
+&lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt;Creative Commons (BY) license&lt;/a&gt; 
+</pre>
+			
+			<h4>Attribution text only</h4>
+			
+			<p>"Life is Sharing" flickr photo by cogdogblog https://flickr.com/photos/cogdog/8188824613 shared under a Creative Commons (BY) license</p>
+			
+<pre>
+"Life is Sharing" flickr photo by cogdogblog 
+https://flickr.com/photos/cogdog/8188824613 shared under a 
+Creative Commons (BY) license
+</pre>
+			
+			
+				<hr />
+			
+
+		<h3>WordPress Attributor (Classic Editor with caption codes)</h3>
+			<p>This attributor creates HTML wrapped in [caption] ... [/caption] shortcodes for use in <a href="https://gogutenberg.com/disable-gutenberg/" target="_blank">WordPress Classic editor</a> to insert images with captions that will include the full attribution. </p>	
 			
 			<h4>Attribution w/ Image (HTML)</h4>
-			<a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"><img src="https://farm9.static.flickr.com/8490/8188824613_037d664dc0_z.jpg" /></a><br /><small><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">"Life is Sharing"</a>  by <a href="https://flickr.com/people/cogdog">cogdogblog</a> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a> </small>
 			
-			<pre>&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;&lt;img src="https://farm9.static.flickr.com/8490/8188824613_037d664dc0_z.jpg" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;small&gt;&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;"Life is Sharing"&lt;/a&gt;  by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; is licensed under &lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt;CC BY&lt;/a&gt; &lt;/small&gt;
-			</pre>
+			<p style="text-align:center"><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"><img src="https://live.staticflickr.com/8490/8188824613_037d664dc0_z.jpg" width="640"  alt="Life is Sharing" /></a><br /><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a></p>
+			
+			<pre>[caption width="640" align="aligncenter"] &lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt; &lt;img src="https://live.staticflickr.com/8490/8188824613_037d664dc0_z.jpg" width="640" alt="Life is Sharing" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;Life is Sharing&lt;/a&gt; flickr photo by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; shared under a &lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt; Creative Commons (BY) license&lt;/a&gt;[/caption]</pre>
+			
 			
 			<h4>Attribution only (HTML)</h4>
 			
-			<a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">"Life is Sharing"</a> by <a href="https://flickr.com/people/cogdog">cogdogblog</a> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a> </small>
+			<p><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">"Life is Sharing"</a> by <a href="https://flickr.com/people/cogdog">cogdogblog</a> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a></p>
 			
-			<pre><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">"Life is Sharing"</a> by <a href="https://flickr.com/people/cogdog">cogdogblog</a> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a> </small></pre>
+<pre>&lt;a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"&gt;Life is Sharing&lt;/a&gt; 
+flickr photo by &lt;a href="https://flickr.com/people/cogdog"&gt;cogdogblog&lt;/a&gt; 
+shared under a 
+&lt;a href="https://creativecommons.org/licenses/by/2.0/"&gt;Creative Commons (BY) license&lt;/a&gt; 
+</pre>
 			
-			
-			<h4>Attribution text only<h4>
+			<h4>Attribution text only</h4>
 			<p>"Life is Sharing" by cogdogblog https://flickr.com/photos/cogdog/8188824613 is licensed under CC BY</p>
-
-		<h3>Wordpress</h3>
-			<p>The Wordpress attributor creates HTML wrapped in [caption] ... [/caption] shortcodes that Wordpress themes use to format images with captions that will include linked attribution. </p>	
 			
-			<h4>Attribution w/ Image (HTML)</h4>
+<pre>
+"Life is Sharing" flickr photo by cogdogblog 
+https://flickr.com/photos/cogdog/8188824613 shared under a 
+Creative Commons (BY) license
+</pre>
 			
-			[caption width="640" align="aligncenter"]<br /><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613"><img src="https://farm9.static.flickr.com/8490/8188824613_037d664dc0_z.jpg" width="640"  alt="Life is Sharing" /></a><br /><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a><br />[/caption]
-			
-			<pre>[caption width="640" align="aligncenter"]
-			<a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">
-			<img src="https://farm9.static.flickr.com/8490/8188824613_037d664dc0_z.jpg" width="640"  
-			alt="Life is Sharing" /></a><br /><a title="Life is Sharing" 
-			href="https://flickr.com/photos/cogdog/8188824613">Life is Sharing</a> 
-			flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> 
-			shared under a <a href="https://creativecommons.org/licenses/by/2.0/">
-			Creative Commons (BY) license</a>[/caption]</pre>
-			
-			
-			<h4>Attribution only (HTML)</h4>
-			
-			<a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">"Life is Sharing"</a> by <a href="https://flickr.com/people/cogdog">cogdogblog</a> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a> </small>
-			
-			<h4>Attribution text only<h4>
-			<p>"Life is Sharing" by cogdogblog https://flickr.com/photos/cogdog/8188824613 is licensed under CC BY</p>
-
-
-		<h3>Wordpress TASL CC Best Practices</h3>
-		<p>Using the format Creative Commons recommends as <a href="https://wiki.creativecommons.org/wiki/Best_practices_for_attribution" target="_blank">best practice format</a>.</p>
+		<hr />
 		
-<p><em>Pretty much the same attribution as shown for HTML but in the same Wordpress caption tags</em></p>
+		<h3>Medium.com</h3>	
+		<p>The attributor generates a large sized image that can be copied via right/command click and pasted into the medium.com editor. Then the caption can be selected, copied, and pasted into the caption (<a href="https://medium.com/@cogdog/cut-n-paste-creative-commons-flickr-attribution-helper-now-for-medium-3de64e3fd137" target="_blank">learn more on medium.com</a> or better, <a href="https://cogdogblog.com/2017/01/cc-flickr-attribution-helper-now-helps-writers-on-medium/" target="_blank">at cogdogblog</a>...)</p>
 		
+		<p><img src="https://live.staticflickr.com/8490/8188824613_037d664dc0_c.jpg" id="mediumfcc"></p>
+		<p><a title="Life is Sharing" href="https://flickr.com/photos/cogdog/8188824613">"Life is Sharing"</a> by <a href="https://flickr.com/people/cogdog">cogdogblog</a> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a></p>
 		
-		
-		
+		<hr />
 			
 		<h3>Stamped in Image</h3>	
-		<p>This tool generates a downloadable image with the attribution added directly to the image, using the Stamper tool by <a href="http://johnjohnston.info/">John Johnston</a></p>
+		<p>This tool generates a downloadable image with the attribution added directly to the image, using the Stamper tool by <a href="http://johnjohnston.info/">John Johnston</a> (<a href="https://cogdogblog.com/2015/03/three-flavors-flickr-cc-attribution-helper/" target="_blank">learn more at cogdogblog</a>).</p>
 		
 		<img width="640" alt="cc-stamped" src="cc-stamped.jpg" />
+				
 			
-			
-			
-			
-		<p></p>
+		<hr />
+		
 		<h3>Markdown</h3>
-		<p>Suitable for static blog generators, Github, and other popular Markdown-friendly tools by <a href="http://blogs.bytecode.com.au/glen">Glen Smith</a>.
-
+		<p>Suitable for static blog generators, Github, and other popular Markdown-friendly tools, this attributor was made by <a href="http://blogs.bytecode.com.au/glen">Glen Smith</a> and then folded into the main tool (<a href="https://cogdogblog.com/2015/10/they-fork-me/" target="_blank">learn more on my blog</a>).</p>
 
 <h4>Attribution w/ Image (HTML)</h4>
 		
-		<pre>
-[![](https://farm9.static.flickr.com/8490/8188824613_037d664dc0.jpg)](https://flickr.com/photos/cogdog/8188824613 "Life is Sharing")  
+<pre>
+[![](https://live.staticflickr.com/8490/8188824613_037d664dc0.jpg)](https://flickr.com/photos/cogdog/8188824613 "Life is Sharing")  
 [Life is Sharing](https://flickr.com/photos/cogdog/8188824613 "Life is Sharing") 
 flickr photo by [cogdogblog](https://flickr.com/people/cogdog) shared under a 
 [Creative Commons (BY) license](https://creativecommons.org/licenses/by/2.0/)
-		</pre>
+</pre>
 		
 	<h4>Attribution only (HTML)</h4>
+
 <pre>
 [Life is Sharing](https://flickr.com/photos/cogdog/8188824613 "Life is Sharing") 
 flickr photo by [cogdogblog](https://flickr.com/people/cogdog) shared under a 
@@ -152,7 +193,7 @@ flickr photo by [cogdogblog](https://flickr.com/people/cogdog) shared under a
 
 	
 	
-	<h4>Attribution text only<h4>
+	<h4>Attribution text only</h4>
 
 <pre>
 "Life is Sharing" flickr photo by cogdogblog 
@@ -163,7 +204,7 @@ Creative Commons (BY) license
 		</div>		
 		<footer class="span12">
 		<div class="alert">
-		 a barking dog production &bull; <a href="http://cog.dog/">cog.dog</a> &bull; <a href="http://cogdogblog.com">cogdogblog.com</a>
+		 flickr cc attribution helper is a barking dog production &bull; <a href="http://cog.dog/">cog.dog</a> &bull; <a href="http://cogdogblog.com">cogdogblog.com</a>
 		</div>
 		</footer>
 	</div>

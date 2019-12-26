@@ -49,7 +49,7 @@ https://github.com/cogdog/flickr-cc-helper
 						p = data.photo;
 		
 						// build the base string for image URLs, everything bu the size code and the ".jpg" at end
-						var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
+						var photosrc = "https://live.staticflickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
 		
 						// lets get fancy and put the image as a background; add black for portrait orientation images
 						$('#wrapper').css("background", "#000 url(" + photosrc + "_z.jpg) no-repeat");  
@@ -89,7 +89,7 @@ https://github.com/cogdog/flickr-cc-helper
 							}
 			
 							// create attribution string
-							attrib_str = '<h2>Attribution w/ image (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" /></a><br /><small><a title="' + p.title._content + '" href="' + photolink + '">' + p.title._content + '</a> flickr photo by <a href="https://flickr.com/people/' + uid + '">' + p.owner.username + '</a> shared ' + get_license_html(p.license) + ' </small></textarea><h2>Attribution only (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '">' + p.title._content + '</a> flickr photo by <a href="https://flickr.com/people/' + uid + '">' + p.owner.username + '</a> shared ' + get_license_html(p.license) + ' </small></textarea><h2>Attribution (text)</h2><textarea rows="3" onClick="this.select()">"' + p.title._content + '" flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" class="dlink" download>' +  photosrc + ps + '.jpg</a>';
+							attrib_str = '<h2>Attribution w/ image (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '"><img src="' + photosrc + ps + '.jpg" alt="' + p.title._content + '" /></a><br /><small><a title="' + p.title._content + '" href="' + photolink + '">' + p.title._content + '</a> flickr photo by <a href="https://flickr.com/people/' + uid + '">' + p.owner.username + '</a> shared ' + get_license_html(p.license) + ' </small></textarea><h2>Attribution only (HTML)</h2><textarea rows="5" onClick="this.select()"><a title="' + p.title._content + '" href="' + photolink + '">' + p.title._content + '</a> flickr photo by <a href="https://flickr.com/people/' + uid + '">' + p.owner.username + '</a> shared ' + get_license_html(p.license) + ' </small></textarea><h2>Attribution (text)</h2><textarea rows="3" onClick="this.select()">"' + p.title._content + '" flickr photo by ' + p.owner.username + ' ' + photolink + ' shared ' + get_license_text(p.license) + '</textarea><h2>Download Image</h2><a href="' +  photosrc + ps + '.jpg" class="dlink" download>' +  photosrc + ps + '.jpg</a>';
 						}
 					
 						// stop the random status messages!

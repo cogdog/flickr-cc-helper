@@ -41,7 +41,7 @@ To make this work, you will need to:
 					p = data.photo;
 				
 					// build the base string for image URLs, everything bu the size code and the ".jpg" at end
-					var photosrc = "https://farm"+ p.farm +".static.flickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
+					var photosrc = "https://live.staticflickr.com/"+ p.server +"/"+ p.id +"_"+ p.secret;
 				
 					// lets get fancy and put the image as a background
 					$('#wrapper').css("background", "url(" + photosrc + "_z.jpg) no-repeat");  
