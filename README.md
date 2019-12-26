@@ -85,28 +85,11 @@ The work of the attribution helper is done via an HTML page boosted with some jQ
 
 These pages act as plugins, so the bookmarklet maker can make different varieties of output. There are currently [various flavors of attributions generated](http://cogdog.github.io/flickr-cc-helper/flavors.html). Note that the HTML copied from the WordPress versions can be pasted directly into a block if you are brave enough to be using the new Gutenberg editor.
 
-* Plain HTML - embeds the image and puts a proper and linked attribution text below
-* Attribution w/image (WordPress Block Editor) - Suited for the new block editor, inserts the image via an automatic embed (and thus sized for theme) and adds attribution in txt block.
-* WordPress Attributor (Classic Editor with caption codes) - embeds the image  wrapped in the [caption]...[/caption] short codes that Wordpress themes use to format images with captions.
-* Stamped - generates a downloadable copy of the image with the attribution stamped right into it (thanks to [John Johnston](http://johnjohnston.info) who created a [nifty mobile version of a flicker finder / attribution stamper](http://johnjohnston.info/flickrcctouch/).
-* Medium.com - Cut and paste made for the medium.com editor (by request of Noah Giesel)
-* Markdown - Suitable for static blog generators, Github, and other popular Markdown-friendly tools, original by [Glen Smith](http://blogs.bytecode.com.au/glen).
+* **Plain HTML** - embeds the image and puts a proper and linked attribution text below
+* **Attribution w/image (WordPress Block Editor)** - Suited for the new block editor, inserts the image via an automatic embed (and thus sized for theme) and adds attribution in txt block.
+* **WordPress Attributor (Classic Editor with caption codes)** - embeds the image  wrapped in the [caption]...[/caption] short codes that Wordpress themes use to format images with captions.
+* **Stamped** - generates a downloadable copy of the image with the attribution stamped right into it (thanks to [John Johnston](http://johnjohnston.info) who created a [nifty mobile version of a flicker finder / attribution stamper](http://johnjohnston.info/flickrcctouch/).
+* **Medium.com** - Cut and paste made for the medium.com editor (by request of Noah Giesel)
+* **Markdown** - Suitable for static blog generators, Github, and other popular Markdown-friendly tools, original by [Glen Smith](http://blogs.bytecode.com.au/glen).
 			
-If you would like to customize the attribution output in any way, or just prefer to run your own,  you can grab a copy of the attribtion helper on github here, fork and modify, and run on your own web server. It just needs to be available at a public web page. And you can still use the bookmarklet generator below to build your browser tool.
-
-## TO RUN YOUR OWN MAKER
-
-Not sure why you might want to since everything is her, but hey, fork and go for it.
-
-Download this repo and use the docs folder for your own site. You can use the entire generator or just your own modified tool page. You need place to put a HTML page at a public URL and you should get your own Flickr API key 
-
-1. Get a flickr API key https://www.flickr.com/services/apps/create/apply
-2. Edit the `assets/javascript/cc-attributor.js` to enter the API key value at
-
-	var fpai = 'YOUR-OWN-APIKEY';
-
-3. Upload to your web server in directory of your choice.  Check the URL. You know how to do this?
-4. Use the [bookmarklet maker](http://cogdog.github.io/flickr-cc-helper/) use your own URL for a helper script, and drag the link to your toolbar.
-5. Attribute away
-
 
