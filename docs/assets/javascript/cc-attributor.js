@@ -9,7 +9,7 @@ var ps_dims = {
 // flickr api key goes here. Get yer own at https://www.flickr.com/services/apps/create/apply
 // Smoke will rise from your browser w/o this, bad mojo will be place upon you. Just kidding.
 
-var fpai = '7177ae43badab8b5428ef2e2c7a66aac'; // did you put your key in quotes?
+var fpai = 'bc5da65ee5e7f823282800672064eae0'; // did you put your key in quotes?
 	
 // LICENSE STUFF ------------------------------------------------------------------------		
 // labels for flickr licenses; first element is license = 0 aka all rights reserved (BOOOO, HISSSS)
