@@ -14,7 +14,7 @@ Those who support [at the Roll the Credits Tier and up level on patreon](https:/
 
 ----- 
 
-![flickr needs help attribution](docs/images/flickr-cc-logo.jpg "cc logo")
+[![flickr needs help attribution](docs/images/flickr-cc-logo.jpg "cc logo")](http://cogdog.github.io/flickr-cc-helper/)
 
 Turns the laborious task of giving attribution of creative commons flickr photos into a one click operation. If you just want to run with it [make your own now](http://cogdog.github.io/flickr-cc-helper/).
 
@@ -30,7 +30,7 @@ This can all be accelerated by dinging the tip jar links above (shameless self-p
 
 ## USING
 
-This tool will create the code for a web browser bookmarklet. You can then drag it to your browser bar. Whenever viewing a flickr image that is open licensed, clicking the tool will open a small window with different options of attribution code you can copy and paste as needed.
+[This tool](http://cogdog.github.io/flickr-cc-helper/) will create the code for a web browser bookmarklet. You can then drag it to your browser bar. Whenever viewing a flickr image that is open licensed, clicking the tool will open a small window with different options of attribution code you can copy and paste as needed.
 
 ![Screen shot of image helper](docs/images/flickr-cc-helper-in-action.jpg "Example of the helper tool in action, showing the relationship of content in flickr.")
 
@@ -73,6 +73,8 @@ Upon viewing a flickr photo, if you are viewing a flickr photo licensed under cr
 ![Screen shot of image helper](docs/images/flickr-cc-helper-in-action.jpg "Example")
 
 The first one is a full HTML attribution with the image embedded, suitable for cutting and pasting into an HTML editor. The second is the attribution in HTML, to be maybe for a footer credit or a caption field. The third is text only, for presentation slides or written works.
+
+[Start here...](http://cogdog.github.io/flickr-cc-helper/)
 
 THE EASY WAY VS THE CUSTOM WAY
 -----
