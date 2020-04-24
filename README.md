@@ -85,7 +85,7 @@ If you want to do basic attribution, you can use the [bookmarklet generating too
 
 The work of the attribution helper is done via an HTML page boosted with some jQuery code. The bookmarklet passes the unique flickr id (it's in the URL), and the tool page uses the [flickr api vis JSON](https://www.flickr.com/services/api/response.json.html) to get all of the information needed to build and display an attribution string.
 
-These pages act as plugins, so the bookmarklet maker can make different varieties of output. There are currently [various flavors of attributions generated](http://cogdog.github.io/flickr-cc-helper/flavors.html). Note that the HTML copied from the WordPress versions can be pasted directly into a block if you are brave enough to be using the new Gutenberg editor.
+These pages act almost like plugins, so the bookmarklet maker can make different varieties of output. There are currently [various flavors of attributions generated](http://cogdog.github.io/flickr-cc-helper/flavors.html). Note that the HTML copied from the WordPress versions can be pasted directly into a block if you are brave enough to be using the new Gutenberg editor (though the captions end up below in a separate paragraph block, oh Gutenberg...).
 
 * **Plain HTML** - embeds the image and puts a proper and linked attribution text below
 * **Attribution w/image (WordPress Block Editor)** - Suited for the new block editor, inserts the image via an automatic embed (and thus sized for theme) and adds attribution in txt block.
