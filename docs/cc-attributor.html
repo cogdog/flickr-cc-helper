@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <!-- 
 
 a CogDog Production because I love to give attribution for flickr photos and they
 suck at making it easy.
 
-http://cogdog.github.io/flickr-cc-helper/
+https://cogdog.github.io/flickr-cc-helper/
 
 This HTML page provides all of the functionality to generate a pop up cut and paste
 atribution page from a bookmarklet tool. Each version of this can generate a different
@@ -37,7 +37,7 @@ https://github.com/cogdog/flickr-cc-helper
 			setTimeout(function() {
 
 				// Do not pass go w/ a proper query paramater
-				if ( typeof qs['flickd'] != 'undefined' )  {
+				if ( typeof qs['flickd'] != 'undefined'  && qs['flickd'] != 'undefined' )  {
 	
 					// set up a flickr api call to get info for a single foto, it's should have been passed in via query parameter 'flickd'
 					var apiurl = 'https://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key=' + fpai + '&photo_id=' + qs['flickd']; 
@@ -101,7 +101,10 @@ https://github.com/cogdog/flickr-cc-helper
 				} else {
 	
 					// no query string variable found, SADFACE
-					attrib_str = '<p>No flickr ID found. Maybe you are just checking the URL? You can <a href="https://cogdog.github.io/flickr-cc-helper/">create your bookmarklet tool over yonder</a>.</p>';
+					attrib_str = '<p>No flickr photo ID found. Double check that you launched the CC Attribution from a flickr photo web page.</p>';
+					
+					// stop the random status messages!
+					clearInterval(waiting_msg);
 					
 					// We stuff  error message where the good stuff would normally go
 					$('#attribution').html(attrib_str);
@@ -116,7 +119,7 @@ https://github.com/cogdog/flickr-cc-helper
 	  	<div id="content">
 	  	<h1 id="title">Flickr CC Attribution Helper</h1>
 	  	<div id="attribution"></div>
-	  	<div id="credits"><a href="https://cogdog.github.io/flickr-cc-helper/" target="_blank">flickr cc attribution helper</a> by @cogdog &bull; <a href="http://cog.dog" target="_blank">cog.dog</a></div>
+	  	<div id="credits"><a href="https://cogdog.github.io/flickr-cc-helper/" target="_blank">flickr cc attribution helper</a> by @cogdog &bull; <a href="https://cog.dog" target="_blank">cog.dog</a></div>
 	  	</div>
   </div>
   </body>
