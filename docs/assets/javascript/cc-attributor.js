@@ -157,17 +157,34 @@ var qs = (function(a) {
 })(window.location.search.substr(1).split('&'));
 
 
+// BE RANDOM --------------------------------------------------------------------------
+// return something random from an array when asked
+
+function getrandom( array ) {
+	// Fisher-Yates Shuffle h/t https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		const temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	 }
+	 // return the last element of the shuffle array
+	 return array.pop();
+}
+
+
+
 // WAITING PATIENTLY FOR THE API --------------------------------------------------------
 // set up a time to change the status message
-var waiting_msg = setInterval(function () { ChangeStatusMessage() }, 800);
+var waiting_msg = setInterval(function () { ChangeStatusMessage() }, 1000);
 
 // Holders for message to let 'em know wheels are spinning
 // Here is where you can have fun by adding new messages FORK IT BABY!
 function ChangeStatusMessage() {
-	var funnymessages = ['Reminiscing about life in Arizona with Jenni Hayman', 'Looking for sea spiders with Karen Cangialosi', 'Making more fun art with Bryan Mathers in his Fabulous Remixer Machine', 'Waving hello to to Alain Frederic Obed all the way to Vaunatu', 'Philosophizing open education with Christina Hendricks', 'Enjoying a good cup of tea with Kim Carter', 'Narrating the thinking with Colin Madland', 'Playing ping pong competitively with Paul Stacey', 'Hopping on the caravan with Shannon Hauser', 'Crafting wood pens with JR Dingwall', 'Wishing to be as wise as Frances Bell', 'Being inspired by Mark Otter', 'Championing open education with Lorna Campbell',   'Favoriting all the tweets by Robin DeRosa', 'Taking cricket lessons from Rajiv Jhangiani', 'Buying at least 3 paintings by Sheila MacNeill', 'Getting Air (and GIFing it) with Terry Greene', 'Admiring the castle view of @ammienoot', 'Humbly thanking Robert Daniel', 'Gone curling with Clint Lalonde', 'Dreaming of walking the Flaggy Shore with Catherine Cronin', 'High fiving with Hugh Blackmer', 'Jamming in the studio with Irwin Devries', 'Getting inspired by economics listening to Jim Luke', 'Sending profuse thanks to Jim McGee', 'Checking our spelling of Autumm Caines', 'Peeking in  Barbara Ganley\'s garden', 'Greasing the tubes for transmission', 'Making a GIF with a hard G', 'Smiling at you for being a good attributor', 'Saying thanks to @SenorG for spreading the good word', 'Snickering at the people who keep saying flickr is dead',  'Feeding the squirrels who spin the turbines', 'Eating tacos with Ken Bauer', 'Bueller? Bueller?', 'Barking like a big dog', 'Has anyone seen my data? Jason?', 'Wondering about the meaning of life', 'Wishing Brian Lamb would blog more', 'Wondering if Jim Groom really exists', 'Knocking on the doors of the Emerald Castle saying please give us some API data', 'Crosswiring the figwitz circuit', 'Gazing up at the sky', 'Getting the lovely stuff', 'Sautéing onions and garlic in butter', 'Being cool in school like @bennettscience', 'Charging the flux capacitor',  'Engaging the Serendipity Happenstancer', 'Tossing frisbees', 'Making the donuts', 'Plugging in the Marshall amps and cranking the volume past 11', 'Pondering our measly existence', 'Asking Alexa for help',  'Double clutching and pushing the pedal to the floor', 'Whistling for Felix', 'Hoping for more nice sponsors on patreon', 'Making another home made green pesto pizza, who wants a slice?' ];
+	var funnymessages = ['Reminiscing about life in Arizona with Jenni Hayman', 'Looking for sea spiders with Karen Cangialosi', 'Making more fun art with Bryan Mathers in his Fabulous Remixer Machine', 'Waving hello to to Alain Frederic Obed all the way to Vaunatu', 'Philosophizing open education with Christina Hendricks', 'Enjoying a good cup of tea with Kim Carter', 'Narrating the thinking with Colin Madland', 'Playing ping pong competitively with Paul Stacey', 'Hopping on the caravan with Shannon Hauser', 'Crafting wood pens with JR Dingwall', 'Wishing to be as wise as Frances Bell', 'Being inspired by Mark Otter', 'Championing open education with Lorna Campbell',   'Favoriting all the tweets by Robin DeRosa', 'Taking cricket lessons from Rajiv Jhangiani', 'Buying at least 3 paintings by Sheila MacNeill', 'Getting Air (and GIFing it) with Terry Greene', 'Admiring the castle view of @ammienoot', 'Humbly thanking Robert Daniel', 'Watching World Cup action with Clint Lalonde', 'Dreaming of walking the Flaggy Shore with Catherine Cronin', 'High fiving with Hugh Blackmer', 'Jamming in the studio with Irwin Devries', 'Getting inspired by economics listening to Jim Luke', 'Sending profuse thanks to Jim McGee', 'Checking our spelling of Autumm Caines', 'Peeking in  Barbara Ganley\'s garden', 'Greasing the tubes for transmission', 'Making a GIF with a hard G', 'Smiling at you for being a good attributor', 'Saying thanks to @SenorG for spreading the good word', 'Snickering at the people who keep saying flickr is dead',  'Feeding the squirrels who spin the turbines', 'Eating tacos with Ken Bauer', 'Bueller? Bueller?', 'Barking like a big dog', 'Has anyone seen my data? Jason?', 'Wondering about the meaning of life', 'Wishing Brian Lamb would blog more', 'Wondering if Jim Groom really exists', 'Knocking on the doors of the Emerald Castle saying please give us some API data', 'Crosswiring the figwitz circuit', 'Gazing up at the sky', 'Getting the lovely stuff', 'Sautéing onions and garlic in butter', 'Being cool in school like @bennettscience', 'Charging the flux capacitor',  'Engaging the Serendipity Happenstancer', 'Tossing frisbees', 'Making the donuts', 'Plugging in the Marshall amps and cranking the volume past 11', 'Pondering our measly existence', 'Asking Alexa for help',  'Double clutching and pushing the pedal to the floor', 'Whistling for Felix', 'Hoping for more nice sponsors on patreon', 'Making another home made green pesto pizza, who wants a slice?' ];
 
 	// Attach the message to the screen. Aren't we clever?	
-	$('#attribution').text(funnymessages[Math.floor(Math.random()*funnymessages.length)] + '...');
+	$('#attribution').text(getrandom(funnymessages) + '...');
 }
 
 // Create an alert if we have not generated a result
