@@ -15,7 +15,17 @@ var fpai = 'bc5da65ee5e7f823282800672064eae0'; // did you put your key in quotes
 // labels for flickr licenses; first element is license = 0 aka all rights reserved (BOOOO, HISSSS)
 // If you like long flowing names, edit away
 // Now includes flickr commons, US GOVT work, and new PD licenses
-var licenses = new Array( "", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND", "", "PD", "CC0", "PDM" );
+var licenses = new Array( "", "BY-NC-SA", "BY-NC", "BY-NC-ND", "BY", "BY-SA", "BY-ND", "", "PD", "CC0", "PDM", "CC BY", "CC BY-SA", "CC BY-ND", "CC BY-NC", "CC BY-NC-SA", "CC BY-NC-ND" );
+
+
+function get_cc_version( lic_id )	{
+// for cc licenses, the new 4.0 versions have ids > 10
+	if (lic_id > 10) {
+		return '4.0';
+	} else {
+		return '2.0';
+	}
+}
 
 // plain text license 
 function get_license_text( thelicense ) {
@@ -34,7 +44,8 @@ function get_license_text( thelicense ) {
 			break;
 
 		default:
-			return 'under a Creative Commons (' + licenses[thelicense] + ') license';
+
+			return 'under a Creative Commons (' + licenses[thelicense] + ' ' + get_cc_version(thelicense) + ') license';
 	}
 }
 
@@ -46,7 +57,7 @@ function get_tasl_text( thelicense ) {
 			return 'no copyright (Flickr Commons)';
 			break;
 		default:
-			return 'CC ' + licenses[thelicense];
+			return 'CC ' + licenses[thelicense] + ' ' + get_cc_version(thelicense);
 	}
 }
 
@@ -68,7 +79,10 @@ function get_license_md( thelicense ) {
 
 		default:
 			cc_lic = licenses[thelicense];
-			return 'under a [Creative Commons (' + cc_lic + ') license](https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/)';
+			// new 4.0 licenses have ids > 10
+			vers = get_cc_version(thelicense);
+
+			return 'under a [Creative Commons (' + cc_lic + ' ' + vers +') license](https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/' + vers + '/)';
 	}
 }
 
@@ -90,8 +104,13 @@ function get_license_html( thelicense ) {
 			break;
 
 		default:
+			
 			cc_lic = licenses[thelicense];
-			return 'under a <a href="https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/">Creative Commons (' + cc_lic +') license</a>';
+			
+			// new 4.0 licenses have ids > 10
+			vers = get_cc_version(thelicense);
+
+			return 'under a <a href="https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/' + vers + '/">Creative Commons (' + cc_lic + ' ' + vers +') license</a>';
 	}
 }
 
@@ -134,7 +153,10 @@ function get_license_md_tasl( thelicense ) {
 			break;
 		default:
 			cc_lic = licenses[thelicense];
-			return '[CC ' + cc_lic + '](https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/2.0/)';
+			// new 4.0 licenses have ids > 10
+			vers = get_cc_version(thelicense);
+			
+			return '[CC ' + cc_lic + ' ' + vers +'](https://creativecommons.org/licenses/' + cc_lic.toLowerCase()  + '/' + vers +'/)';
 	}
 }
 
