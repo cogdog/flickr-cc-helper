@@ -26,7 +26,7 @@ It is time for a new generation approach that might include:
 * re-deployment as Chrome/Firefox Extensions (because bookmarklet tools are from the 1990s)
 * add support for other image services, e.g. Pixabay, Unsplash, MediaWiki Commons (any service that provides information about images via a Javascript open web api 
 
-This can all be accelerated by dinging the tip jar links above (shameless self-promotion, indeed).
+*News Flash* CC Attribution Helper now supports the new CC 4.0 licenses flickr now uses. No changes need to be made in your bookmarklets if they are using the version hosted in GitHub.
 
 ## USING
 
@@ -93,5 +93,9 @@ These pages act almost like plugins, so the bookmarklet maker can make different
 * **Stamped** - generates a downloadable copy of the image with the attribution stamped right into it (thanks to [John Johnston](http://johnjohnston.info) who created a [nifty mobile version of a flicker finder / attribution stamper](http://johnjohnston.info/flickrcctouch/).
 * **Medium.com** - Cut and paste made for the medium.com editor (by request of Noah Giesel)
 * **Markdown** - Suitable for static blog generators, Github, and other popular Markdown-friendly tools, original by [Glen Smith](http://blogs.bytecode.com.au/glen).
-			
 
+## Updates
+**Note I have not done much documenting of changes, but will start now and backfill later**
+
+* 2025 Jun 27 - updated the main `cc-attributor.js` library to address the new flickr 4.0 versions of CC licenses.
+			
