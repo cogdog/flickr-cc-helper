@@ -98,4 +98,5 @@ These pages act almost like plugins, so the bookmarklet maker can make different
 **Note I have not done much documenting of changes, but will start now and backfill later**
 
 * 2025 Jun 27 - updated the main `cc-attributor.js` library to address the new flickr 4.0 versions of CC licenses.
+* 2026 Jan 16 - minor updates to WordPress Block editor output, fix wrap, and get caption inside tags
 			
